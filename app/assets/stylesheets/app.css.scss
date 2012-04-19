@@ -300,6 +300,21 @@ div#alert {
     margin-bottom: 50px;
   }
 }
+
+ul#social_menu  {
+  position: fixed;
+  top: 40%;
+  left: 10%;
+  background: $border;
+  border: 1px solid darken($border, 20%);
+  padding: 4px;
+  @include rounded();
+  li  {
+    margin-bottom: 10px;
+    width: 55px;
+
+  }
+}
 // ---------------------------------------
 // Landing Page
 // ---------------------------------------
