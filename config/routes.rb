@@ -22,6 +22,7 @@ Resumonk::Application.routes.draw do
   put "users/:user_id/choose_template/:id" => "resumes#choose_template", as: :choose_template
   root to: "static_pages#home", as: :root
   
+  
   get "/r/:short_link" => "resumes#short_link", as: :short_link_path
   
   # The priority is based upon order of creation:

@@ -1,3 +1,4 @@
+<% template = ["bigozu", "rushi", "derena", "buhete", "bokagu"] %>
 <section class="row templates">
   <div class="ten columns offset-by-one">
    <h3 class="templates_heading">Resume templates</h3>
@@ -9,7 +10,7 @@
           <div class="row label_wrapper">
             <span><%= theme.humanize %></span>
             <div class="right">
-              <a href="#" title="See this template in action" class="preview small button radius" data-template='<%= "#{theme}" %>'>Preview</a>
+              <%= link_to "Preview", "http://www.resumonk.com/r/#{template[index]}", class: "preview small button radius", target: "_blank" %>
             </div>
           </div><!--row-->
         </div><!--box-->
@@ -25,7 +26,7 @@
   </div><!--ten columns-->
 </section><!--templates-->
 
-<script>
+<!-- <script>
   $(function()  {
     $(".preview").click(function(e) {
        var theme = $(this).data("template")
@@ -39,4 +40,4 @@
 
   })
   
-</script>
+</script> -->
