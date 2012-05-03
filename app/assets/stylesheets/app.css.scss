@@ -285,6 +285,9 @@ div#alert {
   }
   
   .donation_box {
+    background: #fff;
+    padding: 10px;
+    border: 3px solid $border;
     min-height: 235px;
     h3  {
        background: lighten(green, 63%);
@@ -1021,9 +1024,44 @@ section.templates {
     color: $text_blue;
   }
   
+  .actions  {
+    margin-bottom: 20px;
+  }
+  .go_pro_box {
+    h4  {
+      padding: 20px;
+      text-align: center;
+    }
+    
+    p   {
+      font-size: 16px;
+      line-height: 1.5;
+      padding: 20px;
+    }
+    
+    a.button  {
+      width: 200px;
+      margin-top: 30px;
+      margin-left: 50px;
+      background-color: #F67213;
+      padding: 20px 30px;
+      font-size: 22px;
+      @include rounded();
+      span  {
+        font-size: 12px;
+        display: block;
+        padding-top: 5px;
+      }
+      
+      &:hover {
+        background-color: darken(#F67213, 10%);
+      }
+    }
+  }
 
   .box  {
     width: 350px;
+    min-height: 456px;
     float: left;
     margin-right: 30px;
     margin-bottom: 50px;

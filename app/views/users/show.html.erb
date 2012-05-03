@@ -18,7 +18,7 @@
         <% @resumes.each do |resume| %>
           <tr>
             <td class="first">
-              <h3><%= resume.title.nil? ? "Resume title" : resume.title %></h3>
+              <h3><%= resume.title.blank? ? "Resume title" : resume.title %></h3>
               <strong>Unique URL: </strong><%= link_to "http://resumonk.com/r/#{resume.short_link}", "http://resumonk.com/r/#{resume.short_link}", target: "_blank" %>
              
             </td>

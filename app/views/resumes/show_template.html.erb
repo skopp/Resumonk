@@ -1,9 +1,10 @@
 <section class="row templates">
   <div class="ten columns offset-by-one">
-    <%= form_for(:resume, url:choose_template_path, method: :put, html: { id: "choose_template" }) do |f| %>
+    <%= form_for(:resume, url:choose_template_path, method: :put, html: { id: "choose_template", class: "clearfix" }) do |f| %>
     
     <% unless pro %>
       <%= render "shared/free_templates" , f: f  %>
+      
     <% else %>
       <%= render "shared/all_templates" , f: f  %>
     <% end %>
@@ -14,7 +15,7 @@
          </div>
       </div>
 
-     <% end %>
+   <% end %>
     
   </div><!--ten columns-->
 </section><!--templates-->
