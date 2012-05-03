@@ -1,0 +1,37 @@
+<section class="row analytics">
+  <div class="ten columns offset-by-one">
+    <div class="row">
+      <h3 class="analytics_heading">Analytics for '<%= @resume.title%>'</h3>
+    </div>  
+    
+    <div class="panel clearfix">
+      <div class="row">
+        <h4 class="nine columns"><span>Resume unique URL</span> <%= "http://www.resumonk.com/r/#{@resume.short_link}"%></h4>
+        <h4 class="three columns right visits"><span>Total visits</span> <br /><%= "#{@resume.visits.size.to_s} visits" %></h4>
+      </div>
+    </div><!--panel-->
+      
+      
+    
+
+    <div class="bar_chart_wrap">
+      <h4 class="small_header"><%="Number of visits in the past #{@num_of_days} days" %></h4>
+      <%= image_tag(@count_days_bar) %>
+    </div>
+
+   
+
+    <div class="map_wrap">
+       <h4 class="small_header"><%="Country-wise distribution of visitors" %></h4>
+      <%= image_tag(@count_country_map) %>
+    </div>
+    
+    <ul class="country_list five columns">
+      <h4>Country-wise visits</h4>
+      <% for country, count in @country_map %>
+        <li><%= "#{Carmen::country_name(country).nil? ? "Unknown country" : Carmen::country_name(country) } : #{count} visits" %></li>
+      <% end %>
+    </ul>
+
+  </div><!--ten_columns-->
+</section>

@@ -22,4 +22,7 @@ class StaticPagesController < ApplicationController
   
   def resume_templates
   end
+  
+  def pro
+  end
 end

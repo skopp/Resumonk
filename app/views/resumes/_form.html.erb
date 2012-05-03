@@ -1,5 +1,19 @@
+
 <section class="row resume_form">
   <div class="ten columns offset-by-one">
+    <% if pro && !@profile %>
+      <%= render "import_link" %>
+    <% elsif !pro %>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" id="paypal_form" style="display: none;">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="9HYHEU8L8YFU8">
+    <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
+    <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+    </form>
+    
+      <span style="float:right">Looking to import your LinkedIn Profile? <%= link_to "Go Pro! ", "#", id: "go_pro_link" %><small>(just $9.99)</small></span>
+    <% end %>
+    <div class="row">
     <%= form_for([current_user, @resume], html: { class: "nice twelve columns resume_form"}) do |f| %>
     <div class="resume_wrapper">
        <header>
@@ -20,43 +34,14 @@
        
        <div class="row">
        <fieldset class="eleven columns centered">
+         
          <legend>Personal Details</legend>
-         <div class="field row">
-           <div class="six columns">
-            <%= f.label :firstname, "Enter your first name" %>  
-            <%= f.text_field :firstname, class: "large input-text", placeholder: "Jonathan" %>
-           </div><!--six columns-->
-           
-           <div class="five columns offset-by-one">
-             <%= f.label :lastname, "Enter your last name" %>
-             <%= f.text_field :lastname, class: "medium input-text", placeholder: "Doe" %>
-           </div><!--six columns-->
-         </div><!--row-->
-      
-        <div class="field row">     
-          <div class="six columns">  
-            <%= f.label :address %>        
-            <%= f.text_area :address, class: "large small", placeholder: "1600 Amphitheatre Parkway, Mountain View, California, 94043" %>
-          </div>
-          
-          <div class="five columns right offset-by-one">
-            <div class="row first">
-              <%= f.label :phone %>  
-              <%= f.text_field :phone, class: "input-text medium", placeholder: "413-123-4567" %> 
-            </div>
-            
-            <div class="row">
-               <%= f.label :website %>
-              <%= f.text_field :website, class: "input-text medium", placeholder: "http://myportfolio.com/" %>
-             
-            </div>
-          </div><!--six columns-->
-        </div><!--row-->
-      
-         <div class="field row objective">
-           <%= f.label :objective, "Professional Profile", class: "one column subheading" %>
-           <%= f.text_area :objective, class: "nine columns right small", placeholder: "Example Professional Profile: Experienced solution sales professional, with a proven track record for turning around sales for aging products, cutting sales cycle lengths, and growing revenues by an average 35 percent" %>
-         </div>
+         <% if @linkedin_user.nil? %>
+           <%= render "personal_details", f: f %>
+         <% else %>
+           <%= render "resumes/linkedin/personal_details", {f: f, p: @linkedin_user } %>
+         <% end %>
+         
        </fieldset><!--personal_details-->
        </div>
         
@@ -64,10 +49,18 @@
            <fieldset class="eleven columns centered">
               <div class="block row">
                <p class="subheading two columns">Education Details</p>
-               <%= f.fields_for :educations, do |education_form| %>
-                 <%= render "education", :f => education_form %>
-               <% end %>
-              
+                 <% if @profile.nil? %>
+                     <%= f.fields_for :educations do |education_form| %>
+                       <%= render "education", :f => education_form %>  
+                     <% end %>
+                  <% else %>
+                    <% @profile.educations.each do |education| %>
+                     <%= f.fields_for :educations, do |education_form| %>
+                        <%= render "resumes/linkedin/educations", {:f => education_form, :p => education} %>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+               
                <%= link_to_add_fields("Add a school", f, :educations) %>
              </div><!--block-->
               
@@ -80,9 +73,19 @@
           <fieldset class="eleven columns centered">
               <div class="block row">
                <p class="subheading two columns">Employment details</p>
-          <%= f.fields_for :experiences do |experience_form| %>
-            <%= render "experience", :f => experience_form %>  
-          <% end %>
+             <% if @profile.nil? %>
+                <%= f.fields_for :experiences do |experience_form| %>
+                  <%= render "experience", :f => experience_form %>  
+                <% end %>
+             <% else %>
+               <% @profile.positions.each do |position| %>
+                <%= f.fields_for :experiences, do |experience_form| %>
+                   <%= render "resumes/linkedin/experiences", {:f => experience_form, :p => position} %>
+                 <% end %>
+               <% end %>
+             <% end %>
+          
+          
           <%= link_to_add_fields("Add a position", f, :experiences) %>
          </div><!--block-->
           
@@ -94,11 +97,20 @@
       <div class="row">  
        <fieldset class="eleven columns centered">
          <legend>Additional Information</legend>
-            <div class="block row">
-              <%= f.fields_for :skills do |skill_form| %>
-                <%= render "skill", :f => skill_form %>  
+         <div class="block row">
+          <% if @profile.nil? or @profile.skills.empty? %>
+             <%= f.fields_for :skills do |skill_form| %>
+               <%= render "skill", :f => skill_form %>  
+             <% end %>
+          <% else %>
+          
+            <% skills = @profile.skills.collect { |skill| skill.name } %>
+             <%= f.fields_for :skills, do |skill_form| %>
+                <%= render "resumes/linkedin/skills", {:f => skill_form, :p => skills} %>
               <% end %>
-                <%= link_to_add_fields("Add a skill or expertise", f, :skills) %>
+          <% end %>
+          
+        <%= link_to_add_fields("Add a skill or expertise", f, :skills) %>
         </div><!--block-->
       </fieldset>
       </div>
@@ -109,8 +121,15 @@
           </div>
         </div>
       <% end %>
+      </div><!--row-->
 
   </div><!--ten columns-->
-</section><!--resume_form-->   
+</section><!--resume_form-->
+
+<script>
+  $("#go_pro_link").click(function()  {
+    $("#paypal_form").find("input[name='submit']").trigger("click")
+  })
+</script>   
 
 

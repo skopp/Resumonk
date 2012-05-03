@@ -1,0 +1,7 @@
+<h1>Profile</h1>
+<% @profile.positions.each do |position| %>
+  <h2><%= position.company.name %></h2>
+  <p><%= position.title %></p>
+  <p><%= position.summary %></p>
+  
+<% end %>

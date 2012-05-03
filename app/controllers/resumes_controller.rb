@@ -1,5 +1,6 @@
 class ResumesController < ApplicationController
   before_filter :correct_user, except: [:short_link]
+  before_filter :pro_user, only: [:info]
   
   # GET /resume
   # GET /resume.json
@@ -11,7 +12,40 @@ class ResumesController < ApplicationController
   # GET /resume/new
   # GET /resume/new.json
   def new
+    unless session[:rtoken].nil?
+     client = LinkedIn::Client.new("fbfwjf0k7q4q", "JKsukdw1shrQvDZy")
+      if session[:atoken].nil?
+        pin = params[:oauth_verifier]
+        atoken, asecret = client.authorize_from_request(session[:rtoken], session[:rsecret], pin)
+        session[:atoken] = atoken
+        session[:asecret] = asecret
+      else
+        client.authorize_from_access(session[:atoken], session[:asecret])
+      end
+      @linkedin_user = client.profile
+      @location = client.profile(:fields => %w(location))
+      @summary = client.profile(:fields => %w(summary))
+      @url = client.profile(:fields => %w(member_url_resources))
+      @profile = client.profile(:fields => %w(positions educations skills))
+      
+      @resume = current_user.resumes.build if signed_in?
+
+
+        @resume.educations.build
+        @resume.experiences.build
+        @resume.skills.build
+
+        respond_to do |format|
+          format.html # new.html.erb
+          format.json { render json: @resume }
+        end
+    else
+    
+    
+    
     @resume = current_user.resumes.build if signed_in?
+    
+    
     @resume.educations.build
     @resume.experiences.build
     @resume.skills.build
@@ -20,6 +54,7 @@ class ResumesController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @resume }
     end
+  end
   end
 
   # GET /resume/1
@@ -111,6 +146,9 @@ class ResumesController < ApplicationController
   def short_link
     @resume = Resume.where(short_link: params[:short_link]).first
     layout = @resume.layout || "application"
+    Visit.register(@resume.id, get_remote_ip(request.env))
+        
+        
     respond_to do |format|
       format.html {  render layout: @resume.layout }# show.html.erb
       format.pdf do
@@ -123,9 +161,37 @@ class ResumesController < ApplicationController
   end
   
   
+  def info
+      @resume = Resume.find(params[:id])
+      unless @resume
+        flash[:error] = 'This resume is not defined yet'
+      else
+        @num_of_days = (params[:num_of_days] || 15).to_i
+        @count_days_bar = Visit.count_days_bar(params[:id], @num_of_days)
+        chart = Visit.count_country_chart(params[:id], params[:map] || 'world')
+        @count_country_map = chart[:map]
+        @count_country_bar = chart[:bar]
+        @country_map = chart[:country_map]
+      end
+  end
+    
+
   private
       def correct_user
         user = User.find(params[:user_id])
         redirect_to root_path unless current_user?(user)
+      end
+      
+      def pro_user
+        user = User.find(params[:user_id])
+        redirect_to user unless user.pro == true
+      end
+      
+      def get_remote_ip(env)
+        if addr = request.remote_ip
+          addr.split(',').first.strip
+        else
+          env['REMOTE_ADDR']
+        end
       end
 end

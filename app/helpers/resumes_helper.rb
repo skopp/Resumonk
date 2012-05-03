@@ -1,4 +1,5 @@
 module ResumesHelper
+  
   def link_to_remove_fields(name, f)
     f.hidden_field(:_destroy) + link_to(name, "#", class: "remove_field button red radius small right")
   end

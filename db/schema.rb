@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120415205823) do
+ActiveRecord::Schema.define(:version => 20120421164655) do
 
   create_table "educations", :force => true do |t|
     t.integer  "resume_id"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(:version => 20120415205823) do
     t.integer  "resume_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "payment_notifications", :force => true do |t|
+    t.text     "params"
+    t.integer  "user_id"
+    t.string   "transaction_id"
+    t.string   "status"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "resumes", :force => true do |t|
@@ -67,11 +76,20 @@ ActiveRecord::Schema.define(:version => 20120415205823) do
     t.string   "password"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.string   "username"
+    t.boolean  "pro",             :default => false
   end
 
   add_index "users", ["username"], :name => "index_users_on_username"
+
+  create_table "visits", :force => true do |t|
+    t.string   "ip"
+    t.string   "country"
+    t.integer  "resume_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end

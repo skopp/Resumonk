@@ -1,0 +1,152 @@
+/*
+ * Template: Sleek PDF template
+ * Author: Bharani M
+*/
+
+/*-------------------------------------
+  Basic Styles
+  -----------------------------------*/
+  
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+body {
+  font: 16px/1.5 "Lucuda Grande", Helvetica, Arial, sans-serif;
+  color: #393738;
+ 
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+a:link, a:visited {
+  color: #3c3c3c;
+  text-decoration: none;
+}
+
+a:link:hover, a:visited:hover {
+  text-decoration: underline;
+  color: #000;
+}
+
+/*-------------------------------------
+  Container
+  -----------------------------------*/
+
+#container  {
+  width: 800px;
+  margin: 0 auto;
+}
+
+div.section {
+  margin: 10px 0;
+}
+
+#about  {
+  background: #c72f2a;
+}
+
+#about h1  {
+  font-size: 60px;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 10px 0;
+  color: #c72f2a;
+  background: #fff;
+  font-weight: 400;
+  display: block;
+  width: 800px;
+}
+
+#about h1 span.firstname  {
+  font-weight: 700;
+}
+
+h3.sub_heading  {
+  color: #c72f2a;
+  text-transform: uppercase;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 5px 0;
+}
+
+
+div.objective {
+  margin: 10px 0;
+}
+
+ul#contact  {
+  list-style-type: none;
+  background: #e7e7e7;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+
+ul#contact li {
+  padding: 2px 0;
+}
+
+ul#contact li span  {
+  padding-right: 10px;
+}
+
+
+/*-------------------------------------
+  Content
+  -----------------------------------*/
+  
+#content  {
+  width: 58%;
+  float: left;
+  padding-right: 30px;
+}
+
+div.section_header  {
+  border-top: 3px solid #c72f2a;
+  border-bottom: 3px solid #c72f2a;
+}
+
+.sidebar  {
+  width: 35%;
+  padding: 10px;
+  float: left;
+}
+
+.item {
+  padding-top: 10px;
+  border-bottom: 1px dotted #ccc;
+}
+
+.item:last-child  {
+  border-bottom: none;
+}
+
+div.date  {
+  color: #a19b9b;
+  margin: 3px 0;
+}
+
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+html[xmlns] .clearfix {
+	display: block;
+}
+
+* html .clearfix {
+	height: 1%;
+}

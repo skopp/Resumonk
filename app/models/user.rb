@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password, :password_confirmation, :pro
   has_secure_password
   
   
@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   
   validates :email, format: { with: valid_email_regex }
   validates :email, uniqueness: true
-  validates :password, length: { within: 6..50 }
+  #validates :password, length: { within: 6..50 }
   
   before_save :create_remember_token, :create_username
   
@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
     
   # associations
   has_many :resumes
+  has_many :payment_notifications
   
   private
     def create_remember_token

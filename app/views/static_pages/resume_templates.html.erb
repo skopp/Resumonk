@@ -1,7 +1,31 @@
-<% template = ["bigozu", "rushi", "derena", "buhete", "bokagu"] %>
+<% free_template = ["bigozu", 'rushi', "derena", 'buhete', "bokagu"] %>
+<% pro_template = ["rushi", "buhete"]%>
 <section class="row templates">
+  <div class="row">
+  <div class="ten pro_templates columns offset-by-one">
+   <h3 class="templates_heading">PRO templates
+    
+     <small>Go PRO for just $9.99 to get these templates and a whole lot of other features</small>
+   </h3>
+        <% [ 'modernism', 'stylismo'].each_with_index do |theme, index| %>
+
+             <div class='box <%= "#{theme}" %>'>
+               <%= image_tag "#{theme}_small.jpg" %>
+
+               <div class="row label_wrapper">
+                 <span><%= theme.humanize %></span>
+                 <div class="right">
+                   <%= link_to "Preview", "http://www.resumonk.com/r/#{pro_template[index]}", class: "preview small button radius", target: "_blank" %>
+                 </div>
+               </div><!--row-->
+             </div><!--box-->
+        <% end %> 
+      </div>
+    </div>
+    
+  <div class="row">
   <div class="ten columns offset-by-one">
-   <h3 class="templates_heading">Resume templates</h3>
+   <h3 class="templates_heading">Free templates</h3>
     <% [ 'elegant', 'simplimo', 'sleek', 'prestige', 'classica'].each_with_index do |theme, index| %>
       
         <div class='box <%= "#{theme}" %>'>
@@ -10,7 +34,7 @@
           <div class="row label_wrapper">
             <span><%= theme.humanize %></span>
             <div class="right">
-              <%= link_to "Preview", "http://www.resumonk.com/r/#{template[index]}", class: "preview small button radius", target: "_blank" %>
+              <%= link_to "Preview", "http://www.resumonk.com/r/#{free_template[index]}", class: "preview small button radius", target: "_blank" %>
             </div>
           </div><!--row-->
         </div><!--box-->
@@ -22,8 +46,11 @@
           <a class="close-reveal-modal">&#215;</a>
         </div>
        <% end %>
-  
   </div><!--ten columns-->
+  </div>
+  
+  
+
 </section><!--templates-->
 
 <!-- <script>

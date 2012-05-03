@@ -36,6 +36,14 @@ gem "zurb-foundation"
 # Random URL
 gem "rufus-mnemo"
 
+# LinkedIn
+gem "linkedin"
+
+#analytics
+gem "rest-client"
+gem "xml-simple", :require => "xmlsimple"
+gem "carmen"
+
 group :production do
   gem 'pg'
 end

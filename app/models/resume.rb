@@ -14,6 +14,7 @@ class Resume < ActiveRecord::Base
   # validates :phone, format: { with: /[0-9]{10}/ }, allow_blank: true
   
   before_create :create_short_link
+  has_many :visits
   
   private
     def create_short_link

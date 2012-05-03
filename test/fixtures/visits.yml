@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ip: MyString
+  country: MyString
+  resume_id: 1
+
+two:
+  ip: MyString
+  country: MyString
+  resume_id: 1

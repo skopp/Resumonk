@@ -1,4 +1,6 @@
 Resumonk::Application.routes.draw do
+  resources :visits
+
   resources :skills
   resources :experiences
   resources :educations
@@ -7,6 +9,7 @@ Resumonk::Application.routes.draw do
   end
   
   resources :sessions, only: [:new, :create, :destroy]
+  resources :payment_notifications
   match "/signup" => "users#new", as: :signup
   
   match "/login" => "sessions#new", as: :login
@@ -15,12 +18,17 @@ Resumonk::Application.routes.draw do
   match "/toc" => "static_pages#toc", as: :toc
   match "/about" => "static_pages#about", as: :about
   match "/faq" => "static_pages#faq", as: :faq
+  match "/pro" => "static_pages#pro", as: :pro
   match "/privacy_policy" => "static_pages#privacy", as: :privacy
   match "/resume_templates" => "static_pages#resume_templates", as: :resume_templates
+  match "users/:user_id/resumes/:id/info" => "resumes#info", as: :resume_info
   match "users/:user_id/show_links/:id" => "resumes#show_links", as: :show_links
   match "users/:user_id/show_template/:id" => "resumes#show_template", as: :show_template
   put "users/:user_id/choose_template/:id" => "resumes#choose_template", as: :choose_template
   root to: "static_pages#home", as: :root
+  
+  match "/linkedin_auth" => "auth#index", as: :linked_in_auth
+  match "/auth/callback" => "auth#callback", as: :linked_in_cb
   
   
   get "/r/:short_link" => "resumes#short_link", as: :short_link_path

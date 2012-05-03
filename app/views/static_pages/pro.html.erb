@@ -1,0 +1,54 @@
+<section class="row inner_page">
+  <div class="ten columns offset-by-one">
+    <article class="pro_content content">
+      <div class="eleven columns centered donation_box">
+        <h3>Go Pro!<small>(Just $9.99)</small></h3>
+        <p class="sub_text">Looking to import your LinkedIn profile? Want to keep track of the hits on your resume? <br />Check out the PRO version, We are sure that you'll love it.</p>
+        <ul class="row">
+          <li>
+            <h4>Complete analytics</h4>
+            <p>Want to check if any particular recruiter has viewed your online resume? Get a <span>complete date-wise and location-wise graph</span> of who views or downloads your resume.</p>
+            <%= image_tag "pro_page_analytics1.jpg", title: "Complete Analytics", class: "first" %>
+            <%= image_tag "pro_page_analytics2.jpg", title: "Complete Analytics" %>
+            
+          </li>
+
+          <li>
+            <h4>LinkedIn Import</h4>
+            <p>Hate entering your resume details everytime? With the PRO version, you are just one click away from <span>automagically importing your LinkedIn profile</span>.</p>
+            <%= image_tag "pro_page_linkedin1.jpg", title: "Complete Analytics", class: "first" %>
+            <%= image_tag "pro_page_linkedin2.jpg", title: "Complete Analytics" %>
+            
+          </li>
+
+           <li>
+             
+              <h4>More Templates</h4>
+              <p>Go PRO to get access to our <span>exclusive and continuously updated collection of beautiful and modern resume templates</span> to wow you recruiters.</p>
+              <%= image_tag "pro_page_templates.jpg", title: "Complete Analytics" %>
+              
+            </li>
+
+        </ul>
+        
+        <div class="row go_pro_btn">
+          <% if current_user and !pro %>
+            <div class="form_wrap three columns centered">
+              <h4>Just $9.99</h4>
+              <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+              <input type="hidden" name="cmd" value="_s-xclick">
+              <input type="hidden" name="hosted_button_id" value="9HYHEU8L8YFU8">
+              <input type="image" src="https://www.paypalobjects.com/en_GB/i/btn/btn_paynowCC_LG.gif" border="0" name="submit" alt="PayPal — The safer, easier way to pay online.">
+              <img alt="" border="0" src="https://www.paypalobjects.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+              </form>
+              
+              </div>
+          <% elsif !current_user %>
+            <a href="<%= login_path %>" class="button four columns offset-by-three">Just $9.99<span>Login or Signup to get started</span></a>
+          <% end %>
+        </div>
+      </div><!--donation-box-->
+    </article><!--pro_content-->
+
+  </div><!--ten-columns-->
+</section><!--featured-->

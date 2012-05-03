@@ -24,20 +24,12 @@
    </div><!-- ten columns-->
    </div><!--row-->
    
-   
-   <div class="row break">
-     <div class="ten columns additional_info centered clearfix">
-       <div class="six columns donation_box ">
-         <h4>Donate $10, $20 or $50!</h4>
-         <p>Resumonk has cost me a lot of hours of work, if you use it, please donate a token of your appreciation!</p>
-          <a href="#" class="four columns button green radius">Donate</a>
-       </div><!--donation-box-->
-     
-       <div class="jobs five columns">
-         <script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
-         <script type="IN/JYMBII" data-format="inline"></script>
-       </div>
-     </div><!--ten columns-->
-   </div><!--row-->
+  
+  
+
+    <% unless pro %>
+      <%= render "shared/pro_signup_box" %>
+    <% end %>
+       
 </section><!--dashboard-->
 

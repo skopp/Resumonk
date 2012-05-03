@@ -19,7 +19,7 @@
     </div><!--ten-columns-->
   </section><!--featured-->
  
-  <section class="row signup_box show-on-desktops">
+  <section class="row signup_box">
      <div class="ten columns offset-by-one">
        <%= image_tag "monk.png", class: "three columns" %>
        <div class="box nine columns">
@@ -39,26 +39,28 @@
   <section class="row how_it_works">
     <div class="ten columns offset-by-one content_box">
       <h3 class="how_it_works_heading">How it works</h3>
-      <ul class="steps">
+      <ul class="steps row">
         <li class="four columns">
           <h3>Fill in details</h3>
-          <%= image_tag "features_1.png", class:"show-on-desktops" %>
+          <%= image_tag "features_1.png" %>
           <p>Fill in your details using our intuitive interface and have a professional, elegant and formatted resume ready in less than 5 minutes. Resumonk also lets you manage and edit multiple resumes.</p>
         </li>
         
         <li class="four columns">
           <h3>Choose a template</h3>
-          <%= image_tag "features_2.png",  class:"show-on-desktops" %>
-          <p>Choose from our collection of beatifully designed resume templates to create an innovative and unique resume that suits your individual personality. This ensures greater visibility by recruiters.</p>
+          <%= image_tag "features_2.png" %>
+          <p>Choose from our collection of beautifully designed resume templates to create an innovative and unique resume that suits your individual personality. This ensures greater visibility by recruiters.</p>
         </li>
         
         <li class="four columns">
           <h3>Save and share</h3>
-          <%= image_tag "features_3.png", class:"show-on-desktops" %>
+          <%= image_tag "features_3.png" %>
           <p>Resumonk lets you save your resume as a PDF so that you can print it any time. Also, for each resume, you get a unique link that you can share with others via email, Facebook and Twitter.</p>
         </li>
-      
+      </ul>
     </div><!--ten-columns-->
+  
+    
   </section><!--how_it_works-->
   
   <script type="text/javascript">
