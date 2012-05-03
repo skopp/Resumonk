@@ -1,6 +1,8 @@
 ---
+analytics_small.png: analytics_small-e2d748ee87c7a5a769228cecf04c968d.png
 bg.jpg: bg-8dbefa946b0ffb5171e7f349105f55b6.jpg
 border_top.jpg: border_top-74d35efdadac7172e2c30ed6211351a0.jpg
+brush.jpg: brush-45d521f0506d871a61727d17deff63df.jpg
 classica.jpg: classica-2bc3e52c31ce9d14f8431762d5f9ca3d.jpg
 classica_small.jpg: classica_small-cdf2f1a36eb026888d7accdd87655701.jpg
 completely_free.jpg: completely_free-eb4e0fbbc829e9b656505c7ee9198c39.jpg
@@ -21,7 +23,10 @@ headline_bg.jpg: headline_bg-2996ecafea3d95ae68012a9f4082a542.jpg
 how_it_works.png: how_it_works-92022cd5b53b26a309bfafae9e7185e6.png
 input_small.png: input_small-72eb14602ba13e3cfce1dbc359cb5049.png
 lines.png: lines-f3ef6f791129ce9131d8de3813cbf8b9.png
+linked_in_import_small.png: linked_in_import_small-9f7cbe0f15aff3d2a347cb3e638a84a5.png
 login.jpg: login-0fb1f408deeb1fdeee2c49f82ec17fa5.jpg
+modernism.jpg: modernism-edd271907eb95dba6b2733f98826cf8a.jpg
+modernism_small.jpg: modernism_small-ab7145ce0ca0bf8ff3175dda8794f3f7.jpg
 monk.png: monk-8379f6320b497f3762745b0ff4239b6d.png
 monk_small.jpg: monk_small-fe6c005a53e695945ed6ea27810afd18.jpg
 nav_active.png: nav_active-c004cf06ef4763a113e8a159ff0ea6e1.png
@@ -34,6 +39,11 @@ pdf/prestige_header_border.jpg: pdf/prestige_header_border-092f1eb29bdce3497744f
 pdf/prestige_top_border.jpg: pdf/prestige_top_border-7073af067deb827b0aa15bbb8db75ea4.jpg
 prestige.jpg: prestige-8f29a7163b4fcd907bdc943183795dd3.jpg
 prestige_small.jpg: prestige_small-b94d2bd80879b3265e55c913042d3231.jpg
+pro_page_analytics1.jpg: pro_page_analytics1-c95e7a0d43034c2d01de29a6a4582b59.jpg
+pro_page_analytics2.jpg: pro_page_analytics2-0109d93697d797aa2a98d35f64a10322.jpg
+pro_page_linkedin1.jpg: pro_page_linkedin1-4ef857181cabc43c5d6e5a3aa194610d.jpg
+pro_page_linkedin2.jpg: pro_page_linkedin2-2af83d057312a18e3b00b48656181ef9.jpg
+pro_page_templates.jpg: pro_page_templates-60fd1037649089a59214f67340d4b0ae.jpg
 sidebar.jpg: sidebar-61880be0f5b45179a8f8fc5d531f67cb.jpg
 signup_btn.jpg: signup_btn-5d94ef8b13ef744ab417ca486a63ccf3.jpg
 signup_now_headline.jpg: signup_now_headline-bda42ee521682f590dc298b00418210c.jpg
@@ -41,15 +51,20 @@ simplimo.jpg: simplimo-b938c2c64a50f78532fcf9282520fb3a.jpg
 simplimo_small.jpg: simplimo_small-5c4989a6e49605b2caecc78e1d2d6087.jpg
 sleek.jpg: sleek-d7b4d33379143ae8b71047cc00ad9f41.jpg
 sleek_small.jpg: sleek_small-924702def58dd4bfe9bd6ad100eb9585.jpg
+stylismo.jpg: stylismo-af7132b193610a83968a33f8d4476768.jpg
+stylismo_small.jpg: stylismo_small-fefaaf8e841a9efc67b2473ba6cd122c.jpg
+templates_small.png: templates_small-466aa146b7828735bf9c86a21d3ad2fd.png
 underline.jpg: underline-73509f42bd019da354ea942b49193429.jpg
 application.js: application-f56b19ab3d3a6ac6443f566d8de713ef.js
-application.css: application-d1acb6ea38f6e0d6b5b2313f33986c05.css
+application.css: application-efa9dc129e07bac3f88a3799447e9dce.css
 basic_pdf.css: basic_pdf-92d8d07e869b4324fbe1e68797db71c4.css
 classica_pdf.css: classica_pdf-30a1bfee3ee4213a5dff91a3757d476a.css
+modernism_pdf.css: modernism_pdf-375fb71e97276ed4610c74162143917e.css
 prestige_pdf.css: prestige_pdf-4dcbdedcf22eacd90166648c5945c164.css
 show_page.css: show_page-0759012165c013bf3f20c58b917cef43.css
 simplimo_pdf.css: simplimo_pdf-6d3456176c863b08cc317c6d982316f4.css
 sleek_pdf.css: sleek_pdf-2f19d363967b38c8648490a62ab6bbbc.css
+stylismo_pdf.css: stylismo_pdf-f0fb8937534d8ecabe494da76ba27051.css
 foundation/misc/button-gloss.png: foundation/misc/button-gloss-6f80afd3cce8d2e50cae35880d59ec51.png
 foundation/misc/button-overlay.png: foundation/misc/button-overlay-29f8ecbdb6eae59c140eb97fb398e005.png
 foundation/misc/custom-form-sprites.png: foundation/misc/custom-form-sprites-1b4ecb37c5721edb23669c9e40086954.png
