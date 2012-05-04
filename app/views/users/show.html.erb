@@ -3,6 +3,7 @@
   <div class="ten columns offset-by-one">
     <div class="panel clearfix">
       <div class="seven columns">
+        <%= pro %>
         <h4>Howdy, <%= @user.username.humanize %> </h4>
         <p>You currently have <%= pluralize(@user.resumes.count, "resume") %> active resumes.</p>
       </div>

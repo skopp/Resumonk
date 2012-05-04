@@ -4,4 +4,6 @@ module ApplicationHelper
     gravatar_url = "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{s[:size]}"
     image_tag(gravatar_url, alt:"User Gravatar", class:"gravatar three columns")
   end
+  
+  
 end
