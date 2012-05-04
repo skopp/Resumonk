@@ -7,42 +7,94 @@
 
 <url>
   <loc>http://www.resumonk.com/</loc>
-  <changefreq>weekly</changefreq>
-  <priority>1.00</priority>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
 </url>
 <url>
   <loc>http://www.resumonk.com/login</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
 </url>
 <url>
   <loc>http://www.resumonk.com/signup</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
 </url>
 <url>
   <loc>http://www.resumonk.com/about</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
 </url>
 <url>
   <loc>http://www.resumonk.com/toc</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
 </url>
 <url>
   <loc>http://www.resumonk.com/privacy_policy</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
 </url>
 <url>
   <loc>http://www.resumonk.com/faq</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
 </url>
 <url>
   <loc>http://www.resumonk.com/resume_templates</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.resumonk.com/pro</loc>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.resumonk.com/r/bugaze</loc>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.resumonk.com/r/bufubo</loc>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.resumonk.com/r/bigozu</loc>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.resumonk.com/r/rushi</loc>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.resumonk.com/r/derena</loc>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.resumonk.com/r/buhete</loc>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.resumonk.com/r/bokagu</loc>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.resumonk.com/r/bugaze.pdf</loc>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.resumonk.com/r/bufubo.pdf</loc>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.resumonk.com/r/bigozu.pdf</loc>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.resumonk.com/r/rushi.pdf</loc>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.resumonk.com/r/derena.pdf</loc>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.resumonk.com/r/buhete.pdf</loc>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
+</url>
+<url>
+  <loc>http://www.resumonk.com/r/bokagu.pdf</loc>
+  <lastmod>2012-05-04T13:49:07+00:00</lastmod>
 </url>
 </urlset>
