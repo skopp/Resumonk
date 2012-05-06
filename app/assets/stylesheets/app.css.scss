@@ -586,7 +586,13 @@ section.inner_page {
       font-size: 32px;
       @include rounded();
       
+      small {
+        display: block;
+        font-size: 12px;
+        color: lighten(#F67213, 25%);
+      }
       span  {
+        color: #fff;
         display: block;
         font-size: 12px;
         padding-top: 10px;
