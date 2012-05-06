@@ -81,6 +81,19 @@ section.body_content  {
 }
 
 header {
+  margin-bottom: 10px;
+  a.top_templates_link  {
+    float: right;
+    border: 1px solid darken($border, 5%);
+    margin-right: 30px;
+    font-size: 11px;
+    padding: 10px 25px;
+    
+    &:hover {
+      border: 1px solid darken($border, 10%);
+    }
+  }
+  
   #logo {
     margin-top: 40px;
   }
