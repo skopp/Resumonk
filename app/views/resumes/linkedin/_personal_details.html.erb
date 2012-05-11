@@ -1,7 +1,7 @@
 <div class="field row">
    <div class="six columns">
     <%= f.label :firstname, "Enter your first name" %>  
-    <%= f.text_field :firstname, class: "large input-text", placeholder: "Jonathan", value:p.first_name %>
+    <%= f.text_field :firstname, class: "large input-text", placeholder: "Jonathan", value: p.first_name %>
    </div><!--six columns-->
    
    <div class="five columns offset-by-one">
@@ -24,8 +24,12 @@
     
     <div class="row">
        <%= f.label :website %>
-      <%= f.text_field :website, class: "input-text medium", placeholder: "http://myportfolio.com/", value: @url.member_url_resources.first.url %>
-     
+       <% unless @url.nil? %>
+         <%= @url %>
+         <%=# f.text_field :website, class: "input-text medium", placeholder: "http://myportfolio.com/", value: @url.member_url_resources.first.url %>
+       <% else %>
+        <%= f.text_field :website, class: "input-text medium", placeholder: "http://myportfolio.com/" %>
+       <% end %>
     </div>
   </div><!--six columns-->
 </div><!--row-->
@@ -33,5 +37,10 @@
 
  <div class="field row objective">
    <%= f.label :objective, "Professional Profile", class: "one column subheading" %>
-   <%= f.text_area :objective, class: "nine columns right small", placeholder: "Example Professional Profile: Experienced solution sales professional, with a proven track record for turning around sales for aging products, cutting sales cycle lengths, and growing revenues by an average 35 percent", value: @summary.summary %>
+   <% unless @summary.nil? %>
+     <%= f.text_area :objective, class: "nine columns right small", placeholder: "Example Professional Profile: Experienced solution sales professional, with a proven track record for turning around sales for aging products, cutting sales cycle lengths, and growing revenues by an average 35 percent", value: @summary.summary %>
+   <% else %>
+      <%= f.text_area :objective, class: "nine columns right small", placeholder: "Example Professional Profile: Experienced solution sales professional, with a proven track record for turning around sales for aging products, cutting sales cycle lengths, and growing revenues by an average 35 percent" %>
+  <% end %>
+   
  </div>

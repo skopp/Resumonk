@@ -54,7 +54,8 @@
                      <%= f.fields_for :educations do |education_form| %>
                        <%= render "education", :f => education_form %>  
                      <% end %>
-                  <% else %>
+                  <% elsif @profile.educations.any? %>
+                  
                     <% @profile.educations.each do |education| %>
                      <%= f.fields_for :educations, do |education_form| %>
                         <%= render "resumes/linkedin/educations", {:f => education_form, :p => education} %>
@@ -78,7 +79,7 @@
                 <%= f.fields_for :experiences do |experience_form| %>
                   <%= render "experience", :f => experience_form %>  
                 <% end %>
-             <% else %>
+             <% elsif @profile.positions.any? %>
                <% @profile.positions.each do |position| %>
                 <%= f.fields_for :experiences, do |experience_form| %>
                    <%= render "resumes/linkedin/experiences", {:f => experience_form, :p => position} %>

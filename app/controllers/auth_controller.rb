@@ -1,7 +1,7 @@
 class AuthController < ApplicationController
   def index
       # get your api keys at https://www.linkedin.com/secure/developer
-      client = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
+      client = LinkedIn::Client.new("fbfwjf0k7q4q", "JKsukdw1shrQvDZy")
       request_token = client.request_token(:oauth_callback => 
                                         "http://#{request.host_with_port}#{new_user_resume_path(current_user)}")
       session[:rtoken] = request_token.token
