@@ -1,3 +1,5 @@
+<%= tinymce_assets %>
+
 <section class="row resume_form">
   <div class="ten columns offset-by-one">
     <% if pro && !@profile %>
@@ -127,10 +129,18 @@
   </div><!--ten columns-->
 </section><!--resume_form-->
 
+
 <script>
   $("#go_pro_link").click(function()  {
     $("#paypal_form").find("input[name='submit']").trigger("click")
   })
+
+  tinyMCE.init({
+      mode: 'textareas',
+      editor_deselector : "mceNoEditor",
+      theme: 'simple',
+    });
+  
 </script>   
 
 

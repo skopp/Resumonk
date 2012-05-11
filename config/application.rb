@@ -49,7 +49,7 @@ module Resumonk
     # in your app. As such, your models will need to explicitly whitelist or blacklist accessible
     # parameters by using an attr_accessible or attr_protected declaration.
     # config.active_record.whitelist_attributes = true
-
+    
     # Enable the asset pipeline
     config.assets.enabled = true
     config.assets.precompile += ['basic_pdf.css', 'classica_pdf.css', 'prestige_pdf.css', 'simplimo_pdf.css', 'sleek_pdf.css', 'show_page.css', 'stylismo_pdf.css', 'modernism_pdf.css']

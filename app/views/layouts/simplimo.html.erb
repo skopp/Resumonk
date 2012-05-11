@@ -69,7 +69,7 @@
                       </strong><br />
                     <% unless education.description.blank? %>
                       <div class="description">
-                        <p><%= education.description %></p>
+                        <p><%= education.description.html_safe %></p>
                       </div>
                     <% end %>
                   </p>
@@ -89,7 +89,7 @@
                           </h2>
 
                           <p><strong><%= experience.company_name %></strong><br />
-                          <p class="description"><%= experience.job_description %></p>
+                          <p class="description"><%= experience.job_description.html_safe %></p>
                       </dd>
                     <% end %>
 
@@ -101,7 +101,7 @@
                 <% @resume.skills.each do |skill| %>
                   <dd class="full">
                     <h2><%= skill.skill %></h2>
-                    <p><%= skill.description %></p>
+                    <p><%= skill.description.html_safe %></p>
                   </dd>
                   <% end %>
               <% end %>

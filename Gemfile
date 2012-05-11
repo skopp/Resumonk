@@ -39,6 +39,9 @@ gem "rufus-mnemo"
 # LinkedIn
 gem "linkedin"
 
+# Rich text editor
+gem 'tinymce-rails'
+
 #analytics
 gem "rest-client"
 gem "xml-simple", :require => "xmlsimple"
