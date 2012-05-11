@@ -13,7 +13,7 @@ class ResumesController < ApplicationController
   # GET /resume/new.json
   def new
     unless session[:rtoken].nil?
-     client = LinkedIn::Client.new("fbfwjf0k7q4q", "JKsukdw1shrQvDZy")
+     client = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
       if session[:atoken].nil?
         pin = params[:oauth_verifier]
         atoken, asecret = client.authorize_from_request(session[:rtoken], session[:rsecret], pin)
