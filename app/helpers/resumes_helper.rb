@@ -13,4 +13,16 @@ module ResumesHelper
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")", class: "button nine columns right radius add_fields")
     
   end
+  
+  def designation(resume)
+    if !resume.designation.nil?
+      resume.designation
+    elsif resume.experiences.any?
+      resume.experiences.first.designation
+    else
+      ""
+    end
+  end
+  
+  
 end

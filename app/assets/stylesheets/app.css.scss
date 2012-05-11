@@ -922,6 +922,17 @@ section.resume_form {
         margin-left: 40px;
       }
     
+      .designation {
+        input.input-text {
+          margin-top: 10px;
+          margin-left: 80px;
+        }
+        
+        label {
+          padding-top: 20px;
+        }
+      }
+    
     .institute input.input-text {
       margin-left: 0;
       padding: 8px 15px;

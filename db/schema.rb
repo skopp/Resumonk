@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120421164655) do
+ActiveRecord::Schema.define(:version => 20120511182725) do
 
   create_table "educations", :force => true do |t|
     t.integer  "resume_id"
@@ -54,11 +54,12 @@ ActiveRecord::Schema.define(:version => 20120421164655) do
     t.string   "phone"
     t.string   "website"
     t.text     "objective"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "layout"
     t.string   "title"
     t.string   "short_link"
+    t.string   "designation"
   end
 
   add_index "resumes", ["short_link"], :name => "index_resumes_on_short_link"
