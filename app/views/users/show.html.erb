@@ -53,7 +53,8 @@
     
     
     
-  <% unless pro %>
+  <% unless current_user.pro %>
+    
     <%= render "shared/pro_signup_box" %>
   <% end %>
    
