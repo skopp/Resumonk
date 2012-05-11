@@ -35,7 +35,7 @@ class UsersController < ApplicationController
         
         format.html do
           sign_in @user
-          flash[:success] = "Welcome to the Sample App!"
+          flash[:success] = "Welcome to Resumonk!"
           redirect_to new_user_resume_path(current_user)
         end
         format.json { render json: @user, status: :created, location: @user }
