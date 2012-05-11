@@ -2,7 +2,13 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 jQuery ($) ->
-  $("form.resume_form").sisyphus();
+  $("form.resume_form").sisyphus({
+    onSave:  ->
+      console.log("saved")
+      $(".saved-notification").fadeIn("fast").delay(1000).fadeOut("fast")
+  });
+  
+  
   
   $(".remove_field").live "click", ->
     $(this).prev("input[type='hidden']").val("true")
