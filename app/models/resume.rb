@@ -11,6 +11,7 @@ class Resume < ActiveRecord::Base
   accepts_nested_attributes_for :skills, :reject_if => lambda { |a| a[:skill].blank? }, :allow_destroy => true
   
   validates :firstname, :lastname, :address, presence: true
+  validates :website, format: { with: /^(?:http|https):\/\/[a-z0-9]+(?:[\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(?:(?::[0-9]{1,5})?\/[^\s]*)?/ix }, allow_blank: true
   # validates :phone, format: { with: /[0-9]{10}/ }, allow_blank: true
   
   before_create :create_short_link
