@@ -12,9 +12,7 @@
       <div class="wrapper clearfix">
       <div id="about">
         <h1><%= "#{@resume.firstname} #{@resume.lastname}" %></h1>
-        <% unless @resume.experiences.first.designation.blank? %>
-          <h2><%= @resume.experiences.first.designation %></h2>
-        <% end %>
+        <h2><%= designation(@resume) %></h2>
       </div><!--about-->
       
       <ul id="contact">
