@@ -27,5 +27,9 @@
       var layout = '<%= @resume.layout %>';
       $("." + layout).addClass("active")
     }
+    
+    $(".box").on("click", function()  {
+      $(this).find(".use").trigger("click")
+    })
   });
 </script>
