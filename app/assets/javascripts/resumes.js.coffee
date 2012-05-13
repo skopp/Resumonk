@@ -15,6 +15,7 @@ jQuery ($) ->
     $(this).closest(".fields").hide()
     return false
     
+  
   if($(".alert-box").is(":visible"))
     $(".alert-box").delay(3000).slideUp("slow")
     

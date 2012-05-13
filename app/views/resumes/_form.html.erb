@@ -134,12 +134,21 @@
   $("#go_pro_link").click(function()  {
     $("#paypal_form").find("input[name='submit']").trigger("click")
   })
-
-  tinyMCE.init({
-      mode: 'textareas',
-      editor_deselector : "mceNoEditor",
-      theme: 'simple',
+  
+  function init_tiny_mce()  {
+    tinyMCE.init({
+        mode: 'textareas',
+        editor_deselector : "mceNoEditor",
+        theme: 'simple',
     });
+  }
+  
+  init_tiny_mce();
+  
+  $(".add_fields").live("click", function() {
+    init_tiny_mce();
+  }); 
+    
   
 </script>   
 
