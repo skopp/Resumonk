@@ -1,9 +1,8 @@
 <div id="about">
    <div id="story">
      <h1><%= "#{@resume.firstname} #{@resume.lastname}" %></h1>
-     <% unless @resume.experiences.first.designation.blank? %>
-       <h2><%= @resume.experiences.first.designation %></h2>
-     <% end %>
+     <h2><%= designation(@resume) %></h2>
+     
      <% unless @resume.objective.blank? %>
        <p><%= @resume.objective %></p>
      <% end %>
@@ -32,7 +31,7 @@
        <div class="date"><%= education.start_date %> to <%= education.end_date %></div>
        <% unless education.description.blank? %>
          <div class="description">
-           <p><%= education.description %></p>
+           <p><%= education.description.html_safe %></p>
          </div>
        <% end %>
      </div>
@@ -47,7 +46,7 @@
        <h4><%= experience.designation %></h4>
        <div class="date"><%= experience.start_date %> to <%= experience.end_date %></div>
        <div class="description">
-         <p><%= experience.job_description %></p>
+         <p><%= experience.job_description.html_safe %></p>
        </div>
      </div>
    <% end %>
@@ -61,7 +60,7 @@
            <h3><%= skill.skill %></h3>
              <% unless skill.description.blank? %>
                <div class="description">
-                 <p><%= skill.description %></p>
+                 <p><%= skill.description.html_safe %></p>
                </div>
              <% end %>
          </div>
