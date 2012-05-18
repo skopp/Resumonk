@@ -32,6 +32,8 @@
               
               
             <td><%= link_to 'Edit', edit_user_resume_path(current_user, resume), class: "button small blue radius" %></td>
+             <td><%= link_to 'Clone', clone_resume_path(current_user, resume), class: "button small blue radius" %></td>
+             
             <td><%= link_to 'Destroy', [current_user, resume], confirm: 'Are you sure?', method: :delete, class: "button radius red small" %></td>
             
             

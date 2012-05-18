@@ -22,6 +22,7 @@ Resumonk::Application.routes.draw do
   match "/privacy_policy" => "static_pages#privacy", as: :privacy
   match "/resume_templates" => "static_pages#resume_templates", as: :resume_templates
   match "users/:user_id/resumes/:id/info" => "resumes#info", as: :resume_info
+  match "users/:user_id/resumes/:id/clone" => "resumes#clone", as: :clone_resume
   match "users/:user_id/show_links/:id" => "resumes#show_links", as: :show_links
   match "users/:user_id/show_template/:id" => "resumes#show_template", as: :show_template
   put "users/:user_id/choose_template/:id" => "resumes#choose_template", as: :choose_template

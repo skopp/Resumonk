@@ -174,6 +174,17 @@ class ResumesController < ApplicationController
         @country_map = chart[:country_map]
       end
   end
+  
+  def clone
+      @resume = Resume.find(params[:id])
+      @new_resume = @resume.dup
+      @new_resume.experiences = @resume.experiences
+      @new_resume.educations = @resume.educations
+      @new_resume.skills = @resume.skills
+      @new_resume.title = "Clone of #{@resume.title}"
+      @new_resume.save
+      redirect_to edit_user_resume_path(current_user, @new_resume)
+  end
     
 
   private
