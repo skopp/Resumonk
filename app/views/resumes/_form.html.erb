@@ -140,6 +140,13 @@
         mode: 'textareas',
         editor_deselector : "mceNoEditor",
         theme: 'simple',
+        
+        setup : function(ed) {
+              ed.onKeyUp.add(function(ed, e) {
+                $(tinyMCE.activeEditor.getElement()).html(tinyMCE.activeEditor.getContent())
+                console.log($(tinyMCE.activeEditor.getElement()).html())
+              });
+            }
     });
   }
   
@@ -148,8 +155,7 @@
   $(".add_fields").live("click", function() {
     init_tiny_mce();
   }); 
-    
-  
+
 </script>   
 
 
