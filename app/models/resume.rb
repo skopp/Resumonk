@@ -17,6 +17,14 @@ class Resume < ActiveRecord::Base
   before_create :create_short_link
   has_many :visits
   
+  amoeba do
+    enable
+    include_field :educations
+    include_field :experiences
+    include_field :skills
+    clone [:educations, :experiences, :skills]
+  end
+  
   private
     def create_short_link
       self.short_link = Rufus::Mnemo.from_i(rand(8**5))

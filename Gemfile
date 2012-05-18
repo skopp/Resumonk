@@ -39,6 +39,8 @@ gem "rufus-mnemo"
 # LinkedIn
 gem "linkedin"
 
+gem "amoeba"
+
 # Rich text editor
 gem 'tinymce-rails'
 
