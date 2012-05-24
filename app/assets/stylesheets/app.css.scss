@@ -89,6 +89,14 @@ section.body_content  {
     background: darken(#38c506, 2%);
   }
 }
+label.position_label  {
+  display: inline-block;
+}
+
+small.ordering  {
+  display: inline;
+  padding: 0 20px;
+}
 
 div.second_nav  {
   background: #E9E9E9;

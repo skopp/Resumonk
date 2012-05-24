@@ -77,8 +77,10 @@
               <div class="block row">
                <p class="subheading two columns">Employment details</p>
              <% if @profile.nil? %>
+              <% i = 0 %>
                 <%= f.fields_for :experiences do |experience_form| %>
-                  <%= render "experience", :f => experience_form %>  
+                  
+                  <%= render "experience", {:f => experience_form } %>  
                 <% end %>
              <% elsif @profile.positions.any? %>
                <% @profile.positions.each do |position| %>
