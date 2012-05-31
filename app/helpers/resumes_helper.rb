@@ -25,4 +25,12 @@ module ResumesHelper
   end
   
   
+  def email(resume)
+    if !resume.email.blank?
+      resume.email
+    else
+      current_user.email
+    end
+  end
+  
 end

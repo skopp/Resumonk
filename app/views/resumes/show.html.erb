@@ -19,7 +19,7 @@
         <li><span>Website: </span> <strong><%= link_to @resume.website, @resume.website %></strong></li>
       <% end %>
       
-      <li><span>Email: </span> <strong> <a class="email" href='mailto:<%= "#{@resume.user.email}" %>'><%= @resume.user.email %></a></strong></li>
+      <li><span>Email: </span> <strong> <a class="email" href='mailto:<%= "#{email(@resume)}" %>'><%= email(@resume) %></a></strong></li>
       
     </ul>
 

@@ -19,7 +19,7 @@
               Cell: <span class="tel"><%= @resume.phone %></span><br />
             <% end %>
               Address: <span class="add"><%= @resume.address %></span><br />
-              Email: <a class="email" href='mailto:<%= "#{@resume.user.email}" %>'><%= @resume.user.email %></a><br />
+              Email: <a class="email" href='mailto:<%= "#{email(@resume)}" %>'><%= email(@resume) %></a><br />
             <% unless @resume.website.blank? %>
               Website: <%= link_to @resume.website, @resume.website %></a>
             <% end %>

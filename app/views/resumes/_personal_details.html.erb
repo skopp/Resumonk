@@ -23,14 +23,18 @@
     </div>
     
     <div class="row">
-       <%= f.label :website %>
+      <%= f.label :website %>
       <%= f.text_field :website, class: "input-text medium", placeholder: "http://myportfolio.com/" %>
-     
     </div>
-
+    
   </div><!--six columns-->
 </div><!--row-->
-
+  
+  <div class="field designation row">
+    <%= f.label :email, class: "one column subheading", style: "margin-right: 40px" %>
+    <%= f.text_field :email, class: "input-text nine columns right small", placeholder: "me@gmail.com", value: "#{current_user.email}" %>
+  </div>
+  
 
  <div class="field row objective">
    <%= f.label :objective, "Professional Profile", class: "one column subheading" %>

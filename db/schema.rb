@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120523140538) do
+ActiveRecord::Schema.define(:version => 20120531034745) do
 
   create_table "educations", :force => true do |t|
     t.integer  "resume_id"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20120523140538) do
     t.string   "title"
     t.string   "short_link"
     t.string   "designation"
+    t.string   "email"
   end
 
   add_index "resumes", ["short_link"], :name => "index_resumes_on_short_link"

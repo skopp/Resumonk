@@ -17,7 +17,7 @@
         <% unless @resume.phone.blank? %>
           <li><span>Mobile</span> <%= @resume.phone %></li>
         <% end %>
-        <li><span>Email</span><a class="email" href='mailto:<%= "#{@resume.user.email}" %>'><%= @resume.user.email %></a></li>
+        <li><span>Email</span><a class="email" href='mailto:<%= "#{email(@resume)}" %>'><%= email(@resume) %></a></li>
         <li><span>Address</span><%= @resume.address %></li>
         
         <% unless @resume.website.blank? %>
