@@ -29,7 +29,7 @@ module ResumesHelper
     if !resume.email.blank?
       resume.email
     else
-      current_user.email
+      resume.user.email
     end
   end
   
