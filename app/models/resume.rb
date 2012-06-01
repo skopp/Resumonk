@@ -42,7 +42,7 @@ class Resume < ActiveRecord::Base
     end
     
     def create_short_link
-      if short_link.blank?
+      if self.short_link.blank?
         self.short_link = generate_slug
       else
         self.short_link = short_link
