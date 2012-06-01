@@ -13,12 +13,6 @@ class Resume < ActiveRecord::Base
   validates :firstname, :lastname, :address, presence: true
   validates :website, format: { with: /^(?:http|https):\/\/[a-z0-9]+(?:[\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(?:(?::[0-9]{1,5})?\/[^\s]*)?/ix }, allow_blank: true
   # validates :phone, format: { with: /[0-9]{10}/ }, allow_blank: true
-   
-  before_save :create_short_link
-  validates_uniqueness_of :short_link, message: " - This custom slug has already been taken. Please choose another slug for your resume"
-  
-  has_many :visits
-  
   amoeba do
     enable
     include_field :educations
@@ -26,6 +20,13 @@ class Resume < ActiveRecord::Base
     include_field :skills
     clone [:educations, :experiences, :skills]
   end
+  
+   
+  before_save :create_short_link
+  validates_uniqueness_of :short_link, message: " - This custom slug has already been taken. Please choose another slug for your resume"
+  
+  has_many :visits
+
   
   
   
