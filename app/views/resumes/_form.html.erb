@@ -120,6 +120,15 @@
       </fieldset>
       </div>
       
+      <% if pro %>
+        <div class="row">
+             <fieldset class="eleven columns centered" id="custom_slug">
+               <legend>Enter a custom slug for your resume</legend>
+              <h3>http://www.resumonk.com/r/<%= f.text_field :short_link, class: "slug_field", placeholder:"your-custom-name" %></h3>
+            </fieldset>
+        </div>
+      <% end %>
+
         <div class="row actions">
           <div class="four columns centered">
             <%= f.submit "Save and Continue", class:"button large submit radius  green" %>

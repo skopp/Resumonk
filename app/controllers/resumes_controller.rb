@@ -83,7 +83,7 @@ class ResumesController < ApplicationController
   # POST /resume.json
   def create
     @resume = current_user.resumes.build(params[:resume])
-
+    
     respond_to do |format|
       if @resume.save
         format.html { redirect_to show_template_path(current_user, @resume) , notice: 'Resume was successfully created.' }
@@ -184,7 +184,6 @@ class ResumesController < ApplicationController
       redirect_to edit_user_resume_path(current_user, @new_resume)
   end
     
-
   private
       def correct_user
         user = User.find(params[:user_id])

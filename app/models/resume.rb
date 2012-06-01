@@ -13,8 +13,10 @@ class Resume < ActiveRecord::Base
   validates :firstname, :lastname, :address, presence: true
   validates :website, format: { with: /^(?:http|https):\/\/[a-z0-9]+(?:[\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(?:(?::[0-9]{1,5})?\/[^\s]*)?/ix }, allow_blank: true
   # validates :phone, format: { with: /[0-9]{10}/ }, allow_blank: true
+   
+  before_save :create_short_link
+  validates_uniqueness_of :short_link, message: " - This custom slug has already been taken. Please choose another slug for your resume"
   
-  before_create :create_short_link
   has_many :visits
   
   amoeba do
@@ -25,8 +27,24 @@ class Resume < ActiveRecord::Base
     clone [:educations, :experiences, :skills]
   end
   
+  
+  
   private
+    
+    def generate_slug
+      slug = Rufus::Mnemo.from_i(rand(8**5))
+      unless Resume.find_by_short_link(slug)
+        return slug
+      else
+        generate_slug
+      end
+    end
+    
     def create_short_link
-      self.short_link = Rufus::Mnemo.from_i(rand(8**5))
+      if short_link.blank?
+        self.short_link = generate_slug
+      else
+        self.short_link = short_link
+      end
     end
 end

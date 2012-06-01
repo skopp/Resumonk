@@ -890,6 +890,33 @@ section.inner_page {
 // Resume Interface
 // ---------------------------------------
 section.resume_form {
+  
+  #custom_slug  {
+    div.field_with_errors {
+      display: inline;
+    }
+    
+    h3  {
+      font-size: 24px;
+      color: darken($border, 20%);
+    }
+    .slug_field {
+      width: 320px;
+      display: inline;
+      padding: 10px;
+      font-size: 24px;
+      font-weight: 700;
+      border: none;
+      outline: none;
+      border-bottom: 2px dashed $border;
+      background: #fff;
+      
+      &:focus, &:hover  {
+        border-bottom-style: solid;
+      }
+    }
+  }
+  
   small {
     font-size: 10px;
   }
