@@ -366,6 +366,22 @@ div#alert {
   }
   
   .donation_box {
+    .custom_url_feature {
+      p {
+        text-align: center;
+      }
+      
+      strong.your_url {
+        font-size: 26px;
+        text-align: center;
+        margin-bottom: 60px;
+        line-height: 22px;
+        margin-top: -10px;
+        display:block;
+      }
+
+    }
+    
     background: #fff;
     padding: 10px;
     border: 3px solid $border;
