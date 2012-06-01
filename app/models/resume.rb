@@ -22,7 +22,7 @@ class Resume < ActiveRecord::Base
   end
   
    
-  before_save :create_short_link
+  before_validation :create_short_link
   validates_uniqueness_of :short_link, message: " - This custom slug has already been taken. Please choose another slug for your resume"
   
   has_many :visits
@@ -33,7 +33,7 @@ class Resume < ActiveRecord::Base
   private
     
     def generate_slug
-      slug = Rufus::Mnemo.from_i(rand(8**5))
+      slug = Rufus::Mnemo.from_i(rand(9**5))
       unless Resume.find_by_short_link(slug)
         return slug
       else
