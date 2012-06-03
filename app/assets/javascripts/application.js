@@ -12,6 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.core
+//= require jquery.ui.mouse
+//= require jquery.ui.widget
+//= require jquery.ui.sortable
+
 //= require foundation
 //= require_tree .
 
@@ -22,3 +27,5 @@ function add_fields(link, association, content) {
   $(link).before(content.replace(regexp, new_id));
   return false;
 }
+
+

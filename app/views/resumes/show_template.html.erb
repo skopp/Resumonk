@@ -1,13 +1,59 @@
+
 <section class="row templates">
   <div class="ten columns offset-by-one">
     <%= form_for(:resume, url:choose_template_path, method: :put, html: { id: "choose_template", class: "clearfix" }) do |f| %>
-    
-    <% unless current_user.pro %>
-      <%= render "shared/free_templates" , f: f  %>
+    <div class="templates_wrapper row">
+      <% unless current_user.pro %>
+        <%= render "shared/free_templates" , f: f  %>
       
-    <% else %>
-      <%= render "shared/all_templates" , f: f  %>
-    <% end %>
+      <% else %>
+        <%= render "shared/all_templates" , f: f  %>
+      <% end %>
+    </div><!--templates_wrapper-->
+    
+    <div class="layout_order row">
+      
+      <div class="row">
+        <div id="sortable" class="ui-sortable six columns">
+          <h5 class="name">Your resume layout<br /><small>Click and drag these boxes to change the order</small></h5>
+          <ul id="sortable_list">
+          <% @resume.layout_order.split(" ").each do |item| %>
+            <% if @resume.send(item).any? %>
+        	    <li class="ui-state-default"><%= item.humanize %> </li>
+        	  <% end %>
+        	<% end %>
+        	</ul>
+        </div>
+        
+        <div id="customize_template" class="four columns">
+          <% if pro %>
+              <div class="colors_wrap row">
+                <h4>Change template colors</h4>
+                <div id="color_wheel"></div>
+                <%= f.text_field :color, id: "color_wheel_input", placeholder: "Color code" %>
+              </div><!--colors_wrap-->
+          
+              <ul id="font" class="change_font row">
+                <h4>Change font</h4>
+                <li><span style="font-family: Georgia, serif;" data-font="Georgia, serif;">Georgia</span></li>
+                <li><span style="font-family: Arial, Helvetica, sans-serif;" data-font="Arial, Helvetica, sans-serif">Arial</span></li>
+                <li><span style="font-family: 'Courier New', Courier, monospace;" data-font="'Courier New', Courier, monospace">Courier New</span></li>
+                <li><span style="font-family: 'Lucida Console', 'Lucida Grande', Monaco, monospace;" data-font="'Lucida Console', 'Lucida Grande', Monaco, monospace">Lucida Console</span></li>
+                <li><span style="font-family: Verdana, Geneva, sans-serif;" data-font="Verdana, Geneva, sans-serif">Verdana</span></li>
+                <li><span style="font-family: 'Times New Roman', Times, serif;" data-font="'Times New Roman', Times, serif">Times New Roman</span></li>
+              </ul>
+          
+              <%= f.hidden_field :font, id: "font_input_field" %>
+        
+          <% else %>
+            <a href="<%= pro_path %>" title="Go PRO!"><%= image_tag "change_layout_and_color_placeholder.jpg"%></a>
+          <% end %>
+        </div><!--customize_template-->
+      </div>
+      
+      
+      <%= f.hidden_field :layout_order, id: "layout_order_text_field" %>
+    </div><!--layout_order-->
     
       <div class="row actions">
          <div class="four columns centered">
@@ -19,17 +65,28 @@
     
   </div><!--ten columns-->
 </section><!--templates-->
-
-
+ 	
 <script>
   $(function()  {
-    if('<%= @resume.layout %>') {
-      var layout = '<%= @resume.layout %>';
-      $("." + layout).addClass("active")
-    }
+    $(".layout_order").hide()
+    var cw = Raphael.colorwheel($("#color_wheel")[0],200).color("#0f0");
+    //cw.input($("#color_wheel_input")[0]);
+    cw.onchange(function(color)  {
+     
+      $("#color_wheel_input").val(cw.color().hex).css("background", cw.color().hex)
+    })
     
-    $(".box").on("click", function()  {
-      $(this).find(".use").trigger("click")
+    // if('<%= @resume.layout %>') {
+    //      var layout = '<%= @resume.layout %>';
+    //      $("." + layout).addClass("active")
+    //    }
+    //    
+    $("#font").find("span").each(function() {
+      $(this).click(function()  {
+        $("#font").find(".active_font").removeClass("active_font");
+        $(this).parent().addClass("active_font")
+        $("#font_input_field").val($(this).data("font"))
+      })
     })
   });
 </script>

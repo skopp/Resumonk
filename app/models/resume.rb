@@ -10,6 +10,16 @@ class Resume < ActiveRecord::Base
   has_many :skills
   accepts_nested_attributes_for :skills, :reject_if => lambda { |a| a[:skill].blank? }, :allow_destroy => true
   
+  has_many :projects
+  accepts_nested_attributes_for :projects, :reject_if => lambda { |a| a[:project_title].blank? }, :allow_destroy => true
+  
+  has_many :publications
+  accepts_nested_attributes_for :publications, :reject_if => lambda { |a| a[:title].blank? }, :allow_destroy => true
+  
+  has_many :volunteerings
+  accepts_nested_attributes_for :volunteerings, :reject_if => lambda { |a| a[:organization].blank? }, :allow_destroy => true
+  
+  
   validates :firstname, :lastname, :address, presence: true
   validates :website, format: { with: /^(?:http|https):\/\/[a-z0-9]+(?:[\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(?:(?::[0-9]{1,5})?\/[^\s]*)?/ix }, allow_blank: true
   # validates :phone, format: { with: /[0-9]{10}/ }, allow_blank: true

@@ -1,0 +1,29 @@
+<div class="fields ten columns right">
+  
+  <div class="field row institute">
+      <%= f.label :title, "Publication Title" %>
+      <%= f.text_field :title, class: "input-text eleven columns left", placeholder: "Title of your publication" %>
+  </div>
+  
+  <div class="field row institute">
+       <%= f.label :publisher %>
+       <%= f.text_field :publisher, class: "input-text eleven columns left", placeholder: "Publisher's name" %>
+   </div>
+   
+  <div class="field row institute">
+       <%= f.label :date, "Publication date" %>
+       <%= f.text_field :date, class: "input-text eleven columns left", placeholder: "19th May, 2012" %>
+  </div>
+  
+   <div class="row institute field">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "input-text eleven columns left small", style: "margin-left: 0;padding: 8px 15px" %>
+    </div>
+
+
+
+  <div class="field row">
+     <%= link_to_remove_fields("remove", f) %>
+  </div>
+  
+</div><!--fields-->

@@ -11,11 +11,46 @@
 <head>
   <title><%= @resume.user.username.humanize %>'s Resume | Powered by Resumonk - Online Resume Builder</title>
   <meta name="author" content="Bharani M" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="keywords" content="Resume, CV, resume builder, online resume generator, creative resume, online CV builder, professional resume, beautiful resume designs, online resume builder, create beautiful resumes online, desiger resumes, simple resume online, PDF resume">
 	<meta name="description" content="">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600,400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "prestige_pdf", "show_page" %>
+  <%= javascript_include_tag "jquery", "jquery.xcolor.min" %>
   <%= csrf_meta_tags %>
+
+  <style>    
+    <% unless @resume.color.blank? %>
+      body, #about, .wrapper , .prestige .show_container{
+        border-color: <%= @resume.color %>;
+      }
+      
+      <% unless @resume.font.blank? %>
+        body {
+          font-family: <%= @resume.font %>;
+        }
+      <% end %>
+      
+      h1, h2, .date  {
+        color: <%= @resume.color %>;
+      }
+      
+      .section .section_header span, #contact_header, #contact li > span  {
+        background: <%= @resume.color %>;
+      }
+      
+    <% end %>
+    
+  </style>
+  
+  <script>
+    $(document).ready(function() {
+     <% unless @resume.color.blank? %>
+       var lighter_color = $.xcolor.opacity("<%= @resume.color %>", 'white', 0.9)
+       $(".date").css("background", lighter_color)
+     <% end %>
+    });
+   </script>
 
 </head>
   <body class="prestige">
@@ -50,47 +85,141 @@
         </div><!--wrapper-->
 
           <div id="content">
-            <div class="section">
-                <div class="section_header">
-                  <span>Education</span>
-                </div><!--section-header-->
-              <% @resume.educations.each_with_index do |education, index| %>
-                <div class="item">
-                  <h3><%= education.institute_name %></h3>
-                  <h4><%= education.degree %></h4>
-                  <div class="date"><%= education.start_date %> to <%= education.end_date %></div>
-                  <% unless education.description.blank? %>
-                    <div class="description">
-                      <p><%= education.description.html_safe %></p>
+             <% @resume.layout_order.split(" ").each do |item| %>
+                <% if item == "educations" %> 
+                  <% if @resume.educations.any? %>
+                    <div class="section">
+                        <div class="section_header">
+                          <span>Education</span>
+                        </div><!--section-header-->
+                      <% @resume.educations.each_with_index do |education, index| %>
+                        <div class="item">
+                          <h3><%= education.institute_name %></h3>
+                          <h4><%= education.degree %></h4>
+                          <div class="date"><%= education.start_date %> to <%= education.end_date %></div>
+                          <% unless education.description.blank? %>
+                            <div class="description">
+                              <p><%= education.description.html_safe %></p>
+                            </div>
+                          <% end %>
+                          <% unless index == (@resume.educations.length - 1) %>
+                            <%= image_tag 'pdf/prestige_dots.jpg', class:"dots"  %>
+                          <% end %>
+                        </div>
+                      <% end %>
+                  </div><!--section-->
+                  <% end %>
+
+               <% elsif item == "experiences" %>
+                <% if @resume.experiences.any? %>
+                  <div class="section">
+                    <div class="section_header">
+                      <span>Experience</span>
+                    </div><!--section-header-->
+
+                  <% @resume.experiences.each_with_index do |experience, index| %>
+                    <div class="item">
+                      <h3><%= experience.company_name %></h3>
+                      <h4><%= experience.designation %></h4>
+                      <div class="date"><%= experience.start_date %> to <%= experience.end_date %></div>
+                      <div class="description">
+                        <p><%= experience.job_description.html_safe %></p>
+                      </div>
+                      <% unless index == (@resume.experiences.length - 1) %>
+                        <%= image_tag 'pdf/prestige_dots.jpg', class:"dots"  %>
+                      <% end %>
                     </div>
                   <% end %>
-                  <% unless index == (@resume.educations.length - 1) %>
-                    <%= image_tag 'pdf/prestige_dots.jpg', class:"dots"  %>
+                </div><!--section-->
+                <% end %>
+                
+                
+                <% elsif item == "projects" %>
+                  <% if @resume.projects.any? %>
+                  <div class="section">
+                    <div class="section_header">
+                      <span>Projects</span>
+                    </div><!--section-header-->
+
+
+                  <% @resume.projects.each_with_index do |project, index| %>
+                    <div class="item">
+                      <h3><%= project.project_title %></h3>
+                      <% unless project.url.blank? %>
+                        <h4><%= project.url %></h4>
+                      <% end %>
+                      <div class="date"><%= project.start_date %> to <%= project.end_date %></div>
+                      <div class="description">
+                        <p><%= project.description.html_safe %></p>
+                      </div>
+                      <% unless index == (@resume.projects.length - 1) %>
+                        <%= image_tag 'pdf/prestige_dots.jpg', class:"dots"  %>
+                      <% end %>
+                      
+                    </div>
                   <% end %>
-                </div>
-              <% end %>
-          </div><!--section-->
+                  </div><!--section-->
+                  <% end %>
 
-          <div class="section">
-            <div class="section_header">
-              <span>Experience</span>
-            </div><!--section-header-->
+                <% elsif item == "publications" %>
+                <% if @resume.publications.any? %>
+                <div class="section">
+                  <div class="section_header">
+                    <span>Publications</span>
+                  </div><!--section-header-->
 
-          <% @resume.experiences.each_with_index do |experience, index| %>
-            <div class="item">
-              <h3><%= experience.company_name %></h3>
-              <h4><%= experience.designation %></h4>
-              <div class="date"><%= experience.start_date %> to <%= experience.end_date %></div>
-              <div class="description">
-                <p><%= experience.job_description.html_safe %></p>
-              </div>
-              <% unless index == (@resume.experiences.length - 1) %>
-                <%= image_tag 'pdf/prestige_dots.jpg', class:"dots"  %>
-              <% end %>
-            </div>
-          <% end %>
-        </div><!--section-->
-      </div><!--content-->
+
+                    <% @resume.publications.each_with_index do |publication, index| %>
+                      <div class="item">
+                        <h3><%= publication.title %></h3>
+                        <h4><%= publication.publisher %></h4>
+
+                        <div class="date"><%= publication.date %></div>
+                        <div class="description">
+                          <p><%= publication.description.html_safe %></p>
+                        </div>
+                        <% unless index == (@resume.publications.length - 1) %>
+                          <%= image_tag 'pdf/prestige_dots.jpg', class:"dots"  %>
+                        <% end %>
+                        
+                      </div>
+                    <% end %>
+                    </div><!--section-->
+                  <% end %>
+
+                <% elsif item == "volunteerings" %> 
+                <% if @resume.volunteerings.any? %>  
+                  <div class="section">
+                      <div class="section_header">
+                        <span>Volunteerings</span>
+                      </div><!--section-header-->
+
+
+                     <% @resume.volunteerings.each_with_index do |volunteering, index| %>
+                       <div class="item">
+                         <h3><%= volunteering.organization %></h3>
+                         <% unless volunteering.cause.blank? %>
+                           <h4><%= volunteering.cause %></h4>
+                         <% end %>
+
+                         <div class="date"><%= volunteering.start_date %> to <%= volunteering.end_date %></div>
+                         <div class="description">
+                           <p><%= volunteering.description.html_safe %></p>
+                         </div>
+                         
+                         <% unless index == (@resume.volunteerings.length - 1) %>
+                           <%= image_tag 'pdf/prestige_dots.jpg', class:"dots"  %>
+                         <% end %>
+                         
+                       </div>
+                     <% end %>
+                  </div><!--section-->
+                  <% end %>
+
+            <% end %>
+            <% end %>
+            
+        </div><!--content-->
 
       <div class="sidebar">
          <% unless @resume.objective.blank? %>

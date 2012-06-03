@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  project_title: MyString
+  resume_id: 1
+  start_date: MyString
+  end_date: MyString
+  url: MyString
+  description: MyText
+
+two:
+  project_title: MyString
+  resume_id: 1
+  start_date: MyString
+  end_date: MyString
+  url: MyString
+  description: MyText

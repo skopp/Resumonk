@@ -11,12 +11,48 @@
 <head>
   <title><%= @resume.user.username.humanize %>'s Resume | Powered by Resumonk - Online Resume Builder</title>
   <meta name="author" content="Bharani M" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="keywords" content="Resume, CV, resume builder, online resume generator, creative resume, online CV builder, professional resume, beautiful resume designs, online resume builder, create beautiful resumes online, desiger resumes, simple resume online, PDF resume">
 	<meta name="description" content="">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600,400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "sleek_pdf", "show_page" %>
+  <%= javascript_include_tag "jquery", "jquery.xcolor.min" %>
   <%= csrf_meta_tags %>
 
+  <style>
+    <% unless @resume.font.blank? %>
+      body {
+        font-family: <%= @resume.font %>;
+      }
+    <% end %>
+    
+    <% unless @resume.color.blank? %>
+      h1, h3, h3.skill_header {
+        color: <%= @resume.color %>;
+      }
+
+    <% end %>
+
+  </style>
+
+  <script>
+    $(document).ready(function() {
+     <% unless @resume.color.blank? %>
+       var lighter_color = $.xcolor.opacity("<%= @resume.color %>", 'white', 0.5)
+       $(".section_header span").css("color", lighter_color)
+     <% end %>
+    });
+   </script>
+   
+  <style>
+    .section .description  {
+      margin-top: -15px;
+    }
+    
+    .sidebar .description {
+      margin-top: 10px;
+    }
+  </style>
 </head>
   <body class="sleek">
     
@@ -41,54 +77,132 @@
             <% unless @resume.website.blank? %>
               <li><span>Website</span><%= link_to @resume.website, @resume.website %></li>
             <% end %>
-
-
-
           </ul><!--contact-->
 
 
           <div id="content">
-            <div class="section">
-                <div class="section_header">
-                  <%= image_tag 'pdf/dot.jpg', class:"dot" %>
-                  <span>Education</span>
-                </div><!--section-header-->
-              <% @resume.educations.each do |education| %>
-                <div class="item">
-                  <h3><%= education.institute_name %></h3>
-                  <h4><%= education.degree %></h4>
-                  <div class="date"><%= education.start_date %> to <%= education.end_date %></div>
-                  <% unless education.description.blank? %>
-                    <div class="description">
-                      <p><%= education.description.html_safe %></p>
-                    </div>
+            
+              <% @resume.layout_order.split(" ").each do |item| %>
+                  <% if item == "educations" %>
+                  <% if @resume.educations.any? %>
+                    <div class="section">
+                        <div class="section_header">
+                          <%= image_tag 'pdf/dot.jpg', class:"dot" %>
+                          <span>Education</span>
+                        </div><!--section-header-->
+                      <% @resume.educations.each do |education| %>
+                        <div class="item">
+                          <h3><%= education.institute_name %></h3>
+                          <h4><%= education.degree %></h4>
+                          <div class="date"><%= education.start_date %> to <%= education.end_date %></div>
+                          <% unless education.description.blank? %>
+                            <div class="description">
+                              <p><%= education.description.html_safe %></p>
+                            </div>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </div><!--section-->
                   <% end %>
-                </div>
+                   
+                <% elsif item == "experiences" %>
+                  <% if @resume.experiences.any? %>
+                    <div class="section">
+                      <div class="section_header">
+                        <%= image_tag 'pdf/dot.jpg', class:"dot" %>
+                        <span>Experience</span>
+                      </div><!--section-header-->
+
+                    <% @resume.experiences.each do |experience| %>
+                      <div class="item">
+                        <h3><%= experience.company_name %></h3>
+                        <h4><%= experience.designation %></h4>
+                        <div class="date"><%= experience.start_date %> to <%= experience.end_date %></div>
+                        <div class="description">
+                          <p><%= experience.job_description.html_safe %></p>
+                        </div>
+                      </div>
+                    <% end %>
+                    </div><!--section-->
+                  <% end %>
+                  
+                <% elsif item == "projects" %>
+                  <% if @resume.projects.any? %>
+                  <div class="section">
+                      <div class="section_header">
+                        <%= image_tag 'pdf/dot.jpg', class:"dot" %>
+                        <span>Projects</span>
+                      </div><!--section-header-->
+
+                    <% @resume.projects.each do |project| %>
+                      <div class="item">
+                        <h3><%= project.project_title %></h3>
+                        <% unless project.url.blank? %>
+                          <h4><%= project.url %></h4>
+                        <% end %>
+                        <div class="date"><%= project.start_date %> to <%= project.end_date %></div>
+                        <div class="description">
+                          <p><%= project.description.html_safe %></p>
+                        </div>
+                      </div>
+                    <% end %>
+                    </div><!--section-->
+                  <% end %>
+                        
+                <% elsif item == "publications" %>
+                  <% if @resume.publications.any? %>
+                  <div class="section">
+                        <div class="section_header">
+                          <%= image_tag 'pdf/dot.jpg', class:"dot" %>
+                          <span>Publications</span>
+                        </div><!--section-header-->
+
+                      <% @resume.publications.each do |publication| %>
+                        <div class="item">
+                          <h3><%= publication.title %></h3>
+                          <h4><%= publication.publisher %></h4>
+                          
+                          <div class="date"><%= publication.date %></div>
+                          <div class="description">
+                            <p><%= publication.description.html_safe %></p>
+                          </div>
+                        </div>
+                      <% end %>
+                      </div><!--section-->
+                    <% end %>
+                      
+                  <% elsif item == "volunteerings" %>   
+                    <% if @resume.volunteerings.any? %>
+                    <div class="section">
+                         <div class="section_header">
+                           <%= image_tag 'pdf/dot.jpg', class:"dot" %>
+                           <span>Volunteering</span>
+                         </div><!--section-header-->
+
+                       <% @resume.volunteerings.each do |volunteering| %>
+                         <div class="item">
+                           <h3><%= volunteering.organization %></h3>
+                           <% unless volunteering.cause.blank? %>
+                             <h4><%= volunteering.cause %></h4>
+                           <% end %>
+
+                           <div class="date"><%= volunteering.start_date %> to <%= volunteering.end_date %></div>
+                           <div class="description">
+                             <p><%= volunteering.description.html_safe %></p>
+                           </div>
+                         </div>
+                       <% end %>
+                    </div><!--section-->
+                  <% end %>
+                    
+
               <% end %>
-          </div><!--section-->
-
-          <div class="section">
-            <div class="section_header">
-              <%= image_tag 'pdf/dot.jpg', class:"dot" %>
-              <span>Experience</span>
-            </div><!--section-header-->
-
-          <% @resume.experiences.each do |experience| %>
-            <div class="item">
-              <h3><%= experience.company_name %></h3>
-              <h4><%= experience.designation %></h4>
-              <div class="date"><%= experience.start_date %> to <%= experience.end_date %></div>
-              <div class="description">
-                <p><%= experience.job_description.html_safe %></p>
-              </div>
-            </div>
-          <% end %>
-        </div><!--section-->
-      </div><!--content-->
-
+            <% end %>
+          </div><!--content-->
+      
       <div class="sidebar">
          <% unless @resume.objective.blank? %>
-        <div class="objective">
+            <div class="objective">
           <div class="section">
               <div class="section_header">
                 <%= image_tag 'pdf/dot.jpg', class:"dot" %>
@@ -96,11 +210,12 @@
               </div><!--section-header-->
 
               <p><%= @resume.objective %></p>
-
+          </div>
         </div><!--objective-->
-            <% end %>
-          <% if @resume.skills.any? %>
-            <div class="section skills">
+         <% end %>
+         
+         <% if @resume.skills.any? %>
+          <div class="section skills">
                 <div class="section_header">
                   <%= image_tag 'pdf/dot.jpg', class:"dot" %>
                   <span>Skills</span>
@@ -113,14 +228,14 @@
                         <h4><%= skill.description.html_safe %></h4>
                       </div>
                     <% end %>
-                </div>
+               </div>
             <% end %>
           </div><!--skills-->
           <% end %>
 
-        </div><!--sidebar-->
+      </div><!--sidebar-->
         </div><!--container-->
-    </div>
     
   </body>
+  
 </html>

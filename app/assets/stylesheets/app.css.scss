@@ -906,6 +906,69 @@ section.inner_page {
 // Resume Interface
 // ---------------------------------------
 section.resume_form {
+  h3.hidden_field_placeholder {
+    color: darken($border, 10%);
+    font-size: 22px;
+    margin: 10px 0;
+  }
+  a.minimize  {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: -8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 3px;
+    padding-left: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  a.show  {
+     background: #fff url("../assets/maximize.png") 3px center no-repeat;
+  }
+  
+  a.hide  {
+     background: #fff url("../assets/minimize.png") 3px center no-repeat;
+  }
+  
+  
+  .choose_additional_fields {
+    margin: 20px 0;
+    padding: 10px 0;
+    background: lighten(#ccc, 14%);
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    h5  {
+      font-size: 18px;
+      text-transform: uppercase;
+      font-weight: 700;
+      text-align: center;
+      color: darken($border, 20%);
+      margin-bottom: 20px;
+    }
+    
+    a  {
+      display: block;
+      text-align: center;
+      padding: 4px 10px;
+      background: #fff;
+      @include rounded(25px);
+      border: 1px solid $border;
+      font-weight: 700;
+      &:hover {
+        border-color: darken($border, 20%);
+      }
+    }
+    
+    a.inactive_link {
+      opacity: 0.5;
+      cursor: default;
+      &:hover {
+        border: 1px solid $border;
+      }
+    }
+  }
   
   #custom_slug  {
     div.field_with_errors {
@@ -1001,7 +1064,7 @@ section.resume_form {
     
     fieldset {
       margin-top: 20px;
-      
+      position: relative;
       input.input-text, textarea  {
         padding: 8px;
         resize: none;
@@ -1143,8 +1206,128 @@ section.dashboard {
 // ---------------------------------------
 // Template listing
 // ---------------------------------------
+#loading  {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 45%;
+  width: 100px;
+  background: green;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  color: #fff;
+}
 
 section.templates {
+  #customize_template {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid $border;
+    box-shadow: 0 0 15px lighten($border, 10%);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    
+    #color_wheel  {
+      margin-left: 20px;
+    }
+    h4  {
+      font-size: 18px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    
+    input {
+      width: 150px;
+      padding: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      border: 5px solid $border;
+      @include rounded(5px);
+      margin: 20px 0;
+      margin-left: 40px;
+      margin-bottom: 30px;
+    }
+    
+    #font {
+      padding-top: 20px;
+      border-top: 3px solid $border;
+      
+      li  {
+        margin: 6px 0;
+        background: #eee;
+        padding: 8px 0;
+        @include rounded(2px);
+        border: 1px solid #ccc;
+        &:hover {
+          background: darken(#eee, 5%);
+          cursor: pointer;
+        }
+        
+        &.active_font {
+          background: lighten($text_blue, 20%);
+          border-color: darken($text_blue, 10%);
+        }
+      }
+      
+      li span {
+        font-size: 20px;
+        color: #000;
+        padding-left: 20px;
+        display: block;
+
+      }
+    }
+  }
+  
+  #sortable {
+    background: #fff;
+    padding: 20px;
+    border: 1px solid $border;
+    box-shadow: 0 0 15px lighten($border, 10%);
+    min-height: 400px;
+    margin: 10px auto;
+    margin-bottom: 30px;
+    
+    h5.name {
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      padding: 10px 0;
+      padding-bottom: 30px;
+      border-bottom: 3px solid #ccc;
+      border-top: 3px solid #ccc;
+      margin-bottom: 20px;
+      position: relative;
+      small {
+        position: absolute;
+        bottom: 10px;
+        left: 15%;
+        font-size: 12px;
+      }
+    }
+    
+    li  {
+      background: lighten(#ddd, 6%);
+      border: 1px dashed #aaa;
+      padding: 28px 0;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: #000;
+      cursor: crosshair;
+      &:hover {
+        border-style: solid;
+      }
+    }
+    
+    .ui-state-highlight {
+      background: lighten(yellow, 45%);
+      height: 20px;
+    }
+  }
+  
   div.pro_templates {
     margin-bottom: 20px;
     

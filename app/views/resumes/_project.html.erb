@@ -1,0 +1,33 @@
+<div class="fields ten columns right">
+  
+  <div class="field row institute">
+      <%= f.label :project_title %>
+      <%= f.text_field :project_title, class: "input-text eleven columns left", placeholder: "Your project's title" %>
+  </div>
+   
+  <div class="field row">
+     <div class="six columns timespan">
+      <%= f.label :start_date, "Date of start of project" %>
+      <%= f.text_field :start_date, class: "input-text", placeholder: "May, 2009" %>
+      <span class="to">to</span>
+     </div>
+      <div class="six columns">
+      <%= f.label :end_date, "Date of completion of project" %>
+      <%= f.text_field :end_date, class: "input-text", placeholder: "June, 2013" %>
+     </div><!--columns-->
+  </div>
+  
+   <div class="field row institute">
+     <%= f.label :url, "Project URL" %>
+     <%= f.text_field :url, class: "input-text eleven columns left", placeholder: "http://your_website.com/project" %>
+   </div>
+   
+   <div class="row institute field">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "input-text eleven columns left small", style: "margin-left: 0;padding: 8px 15px" %>
+    </div>
+
+  <div class="field row">
+     <%= link_to_remove_fields("remove", f) %>
+  </div>
+</div><!--fields-->

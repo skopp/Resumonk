@@ -11,17 +11,43 @@
 <head>
   <title><%= @resume.user.username.humanize %>'s Resume | Powered by Resumonk - Online Resume Builder</title>
   <meta name="author" content="Bharani M" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="keywords" content="Resume, CV, resume builder, online resume generator, creative resume, online CV builder, professional resume, beautiful resume designs, online resume builder, create beautiful resumes online, desiger resumes, simple resume online, PDF resume">
 	<meta name="description" content="">
   <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
-  <%= stylesheet_link_tag "modernism_pdf", "show_page" %>
-  <%= csrf_meta_tags %>
-  
+  <%= wicked_pdf_stylesheet_link_tag "modernism_pdf", "show_page" %>
+  <%= wicked_pdf_javascript_include_tag "jquery", "jquery.xcolor.min" %>
+
   <style>
     body {
       font-family: "Bree Serif";
     }
+    
+    <% unless @resume.color.blank? %>
+      #about h1, h3.sub_heading  {
+        color: <%= @resume.color %>;
+      }
+      
+      #about  {
+        background: <%= @resume.color %>;
+      }
+      
+      div.section_header  {
+        border-top: 3px solid <%= @resume.color %>;
+        border-bottom: 3px solid <%= @resume.color %>;
+      }
+    <% end %>
+    
   </style>
+  
+  <script>
+    $(document).ready(function() {
+     <% unless @resume.color.blank? %>
+       var lighter_color = $.xcolor.opacity("<%= @resume.color %>", 'white', 0.7)
+       $("#contact").css("background", lighter_color)
+     <% end %>
+    });
+   </script>
 
 </head>
   <body>
@@ -41,45 +67,118 @@
 
         </div><!--obective_wrap-->
 
-          <div id="content">
-            <div class="section">
-                <div class="section_header">
-                  <h3 class="sub_heading">Education</h3>
-                </div><!--section-header-->
-              <% @resume.educations.each_with_index do |education, index| %>
-                <div class="item">
-                  <h3><%= education.institute_name %></h3>
-                  <h4><%= education.degree %></h4>
-                  <div class="date"><%= education.start_date %> to <%= education.end_date %></div>
-                  <% unless education.description.blank? %>
-                    <div class="description">
-                      <p><%= education.description.html_safe %></p>
+         <div id="content">
+            <% @resume.layout_order.split(" ").each do |item| %>
+                <% if item == "educations" %>
+
+                    <div class="section">
+                        <div class="section_header">
+                          <h3 class="sub_heading">Education</h3>
+                        </div><!--section-header-->
+                      <% @resume.educations.each_with_index do |education, index| %>
+                        <div class="item">
+                          <h3><%= education.institute_name %></h3>
+                          <h4><%= education.degree %></h4>
+                          <div class="date"><%= education.start_date %> to <%= education.end_date %></div>
+                          <% unless education.description.blank? %>
+                            <div class="description">
+                              <p><%= education.description.html_safe %></p>
+                            </div>
+                          <% end %>
+                        </div>
+                      <% end %>
+                  </div><!--section-->
+
+
+              <% elsif item == "experiences" %>
+                  <div class="section">
+                    <div class="section_header">
+                      <h3 class="sub_heading">Experience</h3>
+                    </div><!--section-header-->
+
+                  <% @resume.experiences.each_with_index do |experience, index| %>
+                    <div class="item">
+
+                        <h3><%= experience.company_name %></h3>
+                        <h4><%= experience.designation %></h4>
+                      <div class="date"><%= experience.start_date %> to <%= experience.end_date %></div>
+                      <div class="description">
+                        <p><%= experience.job_description.html_safe %></p>
+                      </div>
                     </div>
                   <% end %>
-                </div>
-              <% end %>
-          </div><!--section-->
+                </div><!--section-->
 
-          <div class="section">
-            <div class="section_header">
-              <h3 class="sub_heading">Experience</h3>
-            </div><!--section-header-->
 
-          <% @resume.experiences.each_with_index do |experience, index| %>
-            <div class="item">
-    
-                <h3><%= experience.company_name %></h3>
-                <h4><%= experience.designation %></h4>
-              <div class="date"><%= experience.start_date %> to <%= experience.end_date %></div>
-              <div class="description">
-                <p><%= experience.job_description.html_safe %></p>
-              </div>
-            </div>
-          <% end %>
-        </div><!--section-->
+                <% elsif item == "projects" %>
+                  <div class="section">
+                    <div class="section_header">
+                      <h3 class="sub_heading">Projects</h3>
+                    </div><!--section-header-->
+
+
+                  <% @resume.projects.each do |project| %>
+                    <div class="item">
+                      <h3><%= project.project_title %></h3>
+                      <% unless project.url.blank? %>
+                        <h4><%= project.url %></h4>
+                      <% end %>
+                      <div class="date"><%= project.start_date %> to <%= project.end_date %></div>
+                      <div class="description">
+                        <p><%= project.description.html_safe %></p>
+                      </div>
+                    </div>
+                  <% end %>
+                  </div><!--section-->
+
+                <% elsif item == "publications" %>
+                <div class="section">
+                     <div class="section_header">
+                       <h3 class="sub_heading">Publications</h3>
+                     </div><!--section-header-->
+
+
+                    <% @resume.publications.each do |publication| %>
+                      <div class="item">
+                        <h3><%= publication.title %></h3>
+                        <h4><%= publication.publisher %></h4>
+
+                        <div class="date"><%= publication.date %></div>
+                        <div class="description">
+                          <p><%= publication.description.html_safe %></p>
+                        </div>
+                      </div>
+                    <% end %>
+                    </div><!--section-->
+
+                <% elsif item == "volunteerings" %>   
+                  <div class="section">
+                      <div class="section_header">
+                        <h3 class="sub_heading">Volunteerings</h3>
+                      </div><!--section-header-->
+
+
+                     <% @resume.volunteerings.each do |volunteering| %>
+                       <div class="item">
+                         <h3><%= volunteering.organization %></h3>
+                         <% unless volunteering.cause.blank? %>
+                           <h4><%= volunteering.cause %></h4>
+                         <% end %>
+
+                         <div class="date"><%= volunteering.start_date %> to <%= volunteering.end_date %></div>
+                         <div class="description">
+                           <p><%= volunteering.description.html_safe %></p>
+                         </div>
+                       </div>
+                     <% end %>
+                  </div><!--section-->
+
+            <% end %>
+            <% end %>
 
 
       </div><!--content-->
+
 
       <div class="sidebar">
          <ul id="contact">

@@ -149,3 +149,8 @@ ul#contact li span  {
 .section.skills {
   margin-top: 30px;
 }
+
+.sidebar  {
+  width: 260px;
+  float: left;
+}

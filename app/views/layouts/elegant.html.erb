@@ -11,12 +11,38 @@
 <head>
   <title><%= @resume.user.username.humanize %>'s Resume | Powered by Resumonk - Online Resume Builder</title>
   <meta name="author" content="Bharani M" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="keywords" content="Resume, CV, resume builder, online resume generator, creative resume, online CV builder, professional resume, beautiful resume designs, online resume builder, create beautiful resumes online, desiger resumes, simple resume online, PDF resume">
-	<meta name="description" content="">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:600,400,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag "basic_pdf", "show_page" %>
+  <%= javascript_include_tag "jquery", "jquery.xcolor.min" %>
   <%= csrf_meta_tags %>
 
+  <style>
+    <% unless @resume.font.blank? %>
+      body {
+        font-family: <%= @resume.font %>;
+      }
+    <% end %>
+    
+    <% unless @resume.color.blank? %>
+      h1, h3 {
+        color: <%= @resume.color %>;
+      }
+
+    <% end %>
+    
+  </style>
+  
+  <script>
+    $(document).ready(function() {
+     <% unless @resume.color.blank? %>
+       var lighter_color = $.xcolor.opacity("<%= @resume.color %>", 'white', 0.5)
+       $("#about").css("border-color", lighter_color)
+       $("h2").css("color", lighter_color)
+     <% end %>
+    });
+   </script>
 </head>
   <body class="elegant">
     

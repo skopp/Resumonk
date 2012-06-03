@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120531034745) do
+ActiveRecord::Schema.define(:version => 20120603142235) do
 
   create_table "educations", :force => true do |t|
     t.integer  "resume_id"
@@ -47,6 +47,28 @@ ActiveRecord::Schema.define(:version => 20120531034745) do
     t.datetime "updated_at",     :null => false
   end
 
+  create_table "projects", :force => true do |t|
+    t.string   "project_title"
+    t.integer  "resume_id"
+    t.string   "start_date"
+    t.string   "end_date"
+    t.string   "url"
+    t.text     "description"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "publications", :force => true do |t|
+    t.string   "title"
+    t.string   "publisher"
+    t.string   "date"
+    t.string   "author"
+    t.text     "description"
+    t.integer  "resume_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "resumes", :force => true do |t|
     t.integer  "user_id"
     t.string   "firstname"
@@ -55,13 +77,16 @@ ActiveRecord::Schema.define(:version => 20120531034745) do
     t.string   "phone"
     t.string   "website"
     t.text     "objective"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                                                                                    :null => false
+    t.datetime "updated_at",                                                                                    :null => false
     t.string   "layout"
     t.string   "title"
     t.string   "short_link"
     t.string   "designation"
     t.string   "email"
+    t.string   "layout_order", :default => "educations experiences skills projects publications volunteerings"
+    t.string   "color"
+    t.string   "font"
   end
 
   add_index "resumes", ["short_link"], :name => "index_resumes_on_short_link"
@@ -93,6 +118,17 @@ ActiveRecord::Schema.define(:version => 20120531034745) do
     t.integer  "resume_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "volunteerings", :force => true do |t|
+    t.string   "cause"
+    t.string   "organization"
+    t.integer  "resume_id"
+    t.string   "start_date"
+    t.string   "end_date"
+    t.text     "description"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

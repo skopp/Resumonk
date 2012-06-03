@@ -1,74 +1,147 @@
- <div id="about">
-    <div id="story">
-      <h1><%= "#{@resume.firstname} #{@resume.lastname}" %></h1>
-      
-      <h2><%= designation(@resume) %></h2>
-       
-      <% unless @resume.objective.blank? %>
-        <p><%= @resume.objective %></p>
-      <% end %>
-    </div>
-    
-    <ul id="contact">
-      <% unless @resume.phone.blank? %>
-        <li><span>Phone: </span> <strong><%= @resume.phone %></strong></li>
-      <% end %>
-      <li><span>Address: </span> <strong><%= @resume.address %></strong></li>
-      
-      <% unless @resume.website.blank? %>
-        <li><span>Website: </span> <strong><%= link_to @resume.website, @resume.website %></strong></li>
-      <% end %>
-      
-      <li><span>Email: </span> <strong> <a class="email" href='mailto:<%= "#{email(@resume)}" %>'><%= email(@resume) %></a></strong></li>
-      
-    </ul>
-
-  <div class="section">
-    <h2>Education</h2>
-    <% @resume.educations.each do |education| %>
-      <div class="item">
-        <h3><%= education.institute_name %></h3>
-        <h4><%= education.degree %></h4>
-        <div class="date"><%= education.start_date %> to <%= education.end_date %></div>
-        <% unless education.description.blank? %>
-          <div class="description">
-            <p><%= education.description.html_safe %></p>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="section">
-    <h2>Experience</h2>
-    <% @resume.experiences.each do |experience| %>
-      <div class="item">
-        <h3><%= experience.company_name %></h3>
-        <h4><%= experience.designation %></h4>
-        <div class="date"><%= experience.start_date %> to <%= experience.end_date %></div>
-        <div class="description">
-          <p><%= experience.job_description.html_safe %></p>
-        </div>
-      </div>
-    <% end %>
-  </div>
-  
-  <% if @resume.skills.any? %>
-    <div class="section skills">
-      <h2>Skills</h2>
-      <% @resume.skills.each do |skill| %>
-         <div class="item">
-            <h3><%= skill.skill %></h3>
-              <% unless skill.description.blank? %>
-                <div class="description">
-                  <p><%= skill.description.html_safe %></p>
-                </div>
-              <% end %>
-          </div>
-      <% end %>
-    </div>
-  <% end %>
-  
-    
+<div id="about">
+   <div id="story">
+     <h1><%= "#{@resume.firstname} #{@resume.lastname}" %></h1>
+     <h2><%= designation(@resume) %></h2>
+     
+     <% unless @resume.objective.blank? %>
+       <p><%= @resume.objective %></p>
+     <% end %>
+   </div>
    
+   <ul id="contact">
+     <% unless @resume.phone.blank? %>
+       <li><span>Phone: </span> <strong><%= @resume.phone %></strong></li>
+     <% end %>
+     <li><span>Address: </span> <strong><%= @resume.address %></strong></li>
+     
+     <% unless @resume.website.blank? %>
+       <li><span>Website: </span> <strong><%= link_to @resume.website, @resume.website %></strong></li>
+     <% end %>
+     
+     <li><span>Email: </span> <strong> <a class="email" href='mailto:<%= "#{email(@resume)}" %>'><%= email(@resume) %></a></strong></li>
+     
+   </ul>
+
+    <% @resume.layout_order.split(" ").each do |item| %>
+         <% if item == "educations" %>
+           <% if @resume.educations.any? %>
+             <div class="section">
+               <h2>Education</h2>
+               <% @resume.educations.each do |education| %>
+                 <div class="item">
+                   <h3><%= education.institute_name %></h3>
+                   <h4><%= education.degree %></h4>
+                   <div class="date"><%= education.start_date %> to <%= education.end_date %></div>
+                   <% unless education.description.blank? %>
+                     <div class="description">
+                       <p><%= education.description.html_safe %></p>
+                     </div>
+                   <% end %>
+                 </div>
+               <% end %>
+             </div>
+            <% end %>
+
+    <% elsif item == "experiences" %>
+        <% if @resume.experiences.any? %>
+         <div class="section">
+           <h2>Experience</h2>
+           <% @resume.experiences.each do |experience| %>
+             <div class="item">
+               <h3><%= experience.company_name %></h3>
+               <h4><%= experience.designation %></h4>
+               <div class="date"><%= experience.start_date %> to <%= experience.end_date %></div>
+               <div class="description">
+                 <p><%= experience.job_description.html_safe %></p>
+               </div>
+             </div>
+           <% end %>
+         </div>
+         <% end %>
     
+    <% elsif item == "skills" %>
+ 
+         <% if @resume.skills.any? %>
+           <div class="section skills">
+             <h2>Skills</h2>
+             <% @resume.skills.each do |skill| %>
+                <div class="item">
+                   <h3><%= skill.skill %></h3>
+                     <% unless skill.description.blank? %>
+                       <div class="description">
+                         <p><%= skill.description.html_safe %></p>
+                       </div>
+                     <% end %>
+                 </div>
+             <% end %>
+           </div>
+         <% end %>
+         
+        <% elsif item == "projects" %>
+           <% if @resume.projects.any? %>
+             <div class="section">
+               <h2>Projects</h2>
+
+             <% @resume.projects.each do |project| %>
+               <div class="item">
+                 <h3><%= project.project_title %></h3>
+                 <% unless project.url.blank? %>
+                   <h4><%= project.url %></h4>
+                 <% end %>
+                 <div class="date"><%= project.start_date %> to <%= project.end_date %></div>
+                 <div class="description">
+                   <p><%= project.description.html_safe %></p>
+                 </div>
+               </div>
+             <% end %>
+             </div><!--section-->
+             <% end %>
+             
+        <% elsif item == "publications" %>
+          <% if @resume.publications.any? %>
+           <div class="section">
+               <h2>Publications</h2>
+
+
+               <% @resume.publications.each do |publication| %>
+                 <div class="item">
+                   <h3><%= publication.title %></h3>
+                   <h4><%= publication.publisher %></h4>
+
+                   <div class="date"><%= publication.date %></div>
+                   <div class="description">
+                     <p><%= publication.description.html_safe %></p>
+                   </div>
+                 </div>
+               <% end %>
+            </div><!--section-->
+          <% end %>
+
+
+        <% elsif item == "volunteerings" %>
+          <% if @resume.volunteerings.any? %>
+             <div class="section">
+                 <h2>Volunteering</h2>
+
+                <% @resume.volunteerings.each do |volunteering| %>
+                  <div class="item">
+                    <h3><%= volunteering.organization %></h3>
+                    <% unless volunteering.cause.blank? %>
+                      <h4><%= volunteering.cause %></h4>
+                    <% end %>
+
+                    <div class="date"><%= volunteering.start_date %> to <%= volunteering.end_date %></div>
+                    <div class="description">
+                      <p><%= volunteering.description.html_safe %></p>
+                    </div>
+                  </div>
+                <% end %>
+             </div><!--section-->
+            <% end %>
+
+       <% end %>
+       <% end %>
+ 
+   
+  
+   

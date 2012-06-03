@@ -49,7 +49,10 @@
         
         <div class="row">
            <fieldset class="eleven columns centered">
+              <a href="#" title="Minimize Education details" class="minimize hide">Minimize</a>
+              <h3 class="hidden_field_placeholder" style="display: none">Education details...</h3>
               <div class="block row">
+                
                <p class="subheading two columns">Education Details</p>
                  <% if @profile.nil? %>
                      <%= f.fields_for :educations do |education_form| %>
@@ -74,7 +77,10 @@
           
           <div class="row">
           <fieldset class="eleven columns centered">
+            <a href="#" title="Minimize Employment details" class="minimize hide">Minimize</a>
+            <h3 class="hidden_field_placeholder" style="display: none">Employment details...</h3>
               <div class="block row">
+                
                <p class="subheading two columns">Employment details</p>
              <% if @profile.nil? %>
               <% i = 0 %>
@@ -101,8 +107,11 @@
       
       <div class="row">  
        <fieldset class="eleven columns centered">
-         <legend>Additional Information</legend>
+         <a href="#" title="Minimize Additional info" class="minimize hide">Minimize</a>
+         <h3 class="hidden_field_placeholder" style="display: none">Additional Information...</h3>
+         
          <div class="block row">
+           <p class="subheading two columns">Additional Information</p>
           <% if @profile.nil? or @profile.skills.empty? %>
              <%= f.fields_for :skills do |skill_form| %>
                <%= render "skill", :f => skill_form %>  
@@ -119,6 +128,70 @@
         </div><!--block-->
       </fieldset>
       </div>
+      
+      
+      <!--projects-->
+      <div class="row projects secondary_block" data-role="projects">
+       <fieldset class="eleven columns centered">
+         <a href="#" title="Minimize Additional info" class="minimize hide">Minimize</a>
+          <h3 class="hidden_field_placeholder" style="display: none">Projects...</h3>
+          
+         
+         <div class="block row">
+           <p class="subheading two columns">Projects</p>
+             <%= f.fields_for :projects do |project_form| %>
+               <%= render "project", :f => project_form %>  
+             <% end %>
+        <%= link_to_add_fields("Add a project", f, :projects) %>
+        </div><!--block-->
+      </fieldset>
+      </div>
+      
+       <!--publications-->
+        <div class="row publications secondary_block" data-role="publications">  
+         <fieldset class="eleven columns centered">
+           <a href="#" title="Minimize Additional info" class="minimize hide">Minimize</a>
+            <h3 class="hidden_field_placeholder" style="display: none">Publications...</h3>
+            
+            
+           
+           <div class="block row">
+             <p class="subheading two columns">Publications</p>
+               <%= f.fields_for :publications do |publication_form| %>
+                 <%= render "publication", :f => publication_form %>  
+               <% end %>
+          <%= link_to_add_fields("Add a publication", f, :publications) %>
+          </div><!--block-->
+        </fieldset>
+        </div>
+        
+        <!--volunteering-->
+          <div class="row volunteering secondary_block" data-role="volunteering">  
+           <fieldset class="eleven columns centered">
+             <a href="#" title="Minimize Additional info" class="minimize hide">Minimize</a>
+              <h3 class="hidden_field_placeholder" style="display: none">Volunteering positions...</h3>
+              
+             
+             <div class="block row">
+               <p class="subheading two columns">Volunteering</p>
+                 <%= f.fields_for :volunteerings do |volunteering_form| %>
+                   <%= render "volunteering", :f => volunteering_form %>  
+                 <% end %>
+            <%= link_to_add_fields("Add a volunteering position", f, :volunteerings) %>
+            </div><!--block-->
+          </fieldset>
+          </div>
+          
+        <!--choose_fields_to_add-->
+        <div class="row choose_additional_fields">  
+         <ul class="twelve columns centered">
+           <h5>Add more sections</h5>
+           <li class="three columns"><a href="#" title="projects" class="active_link">Add a Project</a></li>
+           <li class="four columns"><a href="#" title="publications" class="active_link">Add a Publication</a></li>
+           <li class="four columns"><a href="#" title="volunteering" class="active_link">Volunteering position</a></li>
+        </fieldset>
+        </div>
+        
       
       <% if pro %>
         <div class="row">
@@ -171,6 +244,54 @@
   $(".add_fields").live("click", function() {
     init_tiny_mce();
   }); 
+  
+  
+  $(function(){
+    
+    $(".secondary_block").each(function(){
+      if( $(this).find("input:first").val() === "") {
+        $(this).hide();
+      }
+    });
+            
+  
+            
+    $(".choose_additional_fields").find("a.active_link").click(function() {
+      var section = $(this).attr("title");
+      if( !($("." + section).is(":visible")) )  {
+           $("." + section).slideDown("1000").find("table").css("width", "97%")
+      }
+      
+      $(this).removeClass("active_link").addClass("inactive_link");
+      return false;
+   })
+    
+  
+  $(".hide").live("click", function(){
+      
+       $(this).parent().find(".row").slideUp("1000")
+       $(this).parent().find("h3.hidden_field_placeholder").slideDown("1000")
+       $(this).text("Maximize").removeClass("hide").addClass("show")
+       return false
+  })
+
+   
+   $(".show").live("click", function(){
+       $(this).parent().find("h3.hidden_field_placeholder").slideUp("1000")
+       $(this).parent().find(".row").slideDown("1000")
+       $(this).text("Minimize").removeClass("show").addClass("hide")
+       return false
+       
+     })
+
+   $(".choose_additional_fields").find("a.active_link").each(function() {
+     if($("." + $(this).attr("title")).is(":visible"))  {
+       $(this).removeClass("active_link").addClass("inactive_link")
+     }
+   })
+  
+  
+  });
 
 </script>   
 

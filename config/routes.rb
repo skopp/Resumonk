@@ -1,4 +1,10 @@
 Resumonk::Application.routes.draw do
+  resources :volunteerings
+
+  resources :publications
+
+  resources :projects
+
   resources :visits
 
   resources :skills

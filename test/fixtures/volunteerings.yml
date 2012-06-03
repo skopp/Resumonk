@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cause: MyString
+  organization: MyString
+  resume_id: 1
+  start_date: MyString
+  end_date: MyString
+  description: MyText
+
+two:
+  cause: MyString
+  organization: MyString
+  resume_id: 1
+  start_date: MyString
+  end_date: MyString
+  description: MyText
