@@ -12,38 +12,38 @@ class ResumesController < ApplicationController
   # GET /resume/new
   # GET /resume/new.json
   def new
-    # unless session[:rtoken].nil?
-    #  client = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
-    #   if session[:atoken].nil?
-    #     pin = params[:oauth_verifier]
-    #     atoken, asecret = client.authorize_from_request(session[:rtoken], session[:rsecret], pin)
-    #     session[:atoken] = atoken
-    #     session[:asecret] = asecret
-    #   else
-    #     client.authorize_from_access(session[:atoken], session[:asecret])
-    #   end
-    #   @linkedin_user = client.profile
-    #   @location = client.profile(:fields => %w(location))
-    #   @summary = client.profile(:fields => %w(summary))
-    #   @url = client.profile(:fields => %w(member_url_resources))
-    #   @profile = client.profile(:fields => %w(positions educations skills))
-    #   
-    #   @resume = current_user.resumes.build if signed_in?
-    # 
-    # 
-    #     @resume.educations.build
-    #     @resume.experiences.build
-    #     @resume.skills.build
-    #     @resume.projects.build
-    #     @resume.publications.build
-    #     @resume.volunteerings.build
-    #
-    #     respond_to do |format|
-    #       format.html # new.html.erb
-    #       format.json { render json: @resume }
-    #     end
-    # else
-    # 
+    unless session[:rtoken].nil?
+     client = LinkedIn::Client.new(ENV['LINKEDIN_KEY'], ENV['LINKEDIN_SECRET'])
+      if session[:atoken].nil?
+        pin = params[:oauth_verifier]
+        atoken, asecret = client.authorize_from_request(session[:rtoken], session[:rsecret], pin)
+        session[:atoken] = atoken
+        session[:asecret] = asecret
+      else
+        client.authorize_from_access(session[:atoken], session[:asecret])
+      end
+      @linkedin_user = client.profile
+      @location = client.profile(:fields => %w(location))
+      @summary = client.profile(:fields => %w(summary))
+      @url = client.profile(:fields => %w(member_url_resources))
+      @profile = client.profile(:fields => %w(positions educations skills))
+      
+      @resume = current_user.resumes.build if signed_in?
+    
+    
+        @resume.educations.build
+        @resume.experiences.build
+        @resume.skills.build
+        @resume.projects.build
+        @resume.publications.build
+        @resume.volunteerings.build
+    
+        respond_to do |format|
+          format.html # new.html.erb
+          format.json { render json: @resume }
+        end
+    else
+    
     
     
     @resume = current_user.resumes.build if signed_in?
