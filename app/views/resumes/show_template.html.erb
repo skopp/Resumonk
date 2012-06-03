@@ -17,11 +17,24 @@
         <div id="sortable" class="ui-sortable six columns">
           <h5 class="name">Your resume layout<br /><small>Click and drag these boxes to change the order</small></h5>
           <ul id="sortable_list">
-          <% @resume.layout_order.split(" ").each do |item| %>
-            <% if @resume.send(item).any? %>
-        	    <li class="ui-state-default"><%= item.humanize %> </li>
+            <% if @resume.educations.any? %>
+        	    <li class="ui-state-default">Educations </li>
         	  <% end %>
-        	<% end %>
+        	  <% if @resume.experiences.any? %>
+          	  <li class="ui-state-default">Experiences </li>
+          	<% end %>
+          	<% if @resume.skills.any? %>
+              <li class="ui-state-default">Skills </li>
+            <% end %>
+      	    <% if @resume.projects.any? %>
+        	    <li class="ui-state-default">Projects </li>
+        	  <% end %>
+        	  <% if @resume.volunteerings.any? %>
+              <li class="ui-state-default">Volunteering </li>
+            <% end %>  
+            <% if @resume.publications.any? %>
+          	  <li class="ui-state-default">Publications </li>
+        	  <% end %>
         	</ul>
         </div>
         

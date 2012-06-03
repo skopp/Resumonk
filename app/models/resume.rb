@@ -28,7 +28,10 @@ class Resume < ActiveRecord::Base
     include_field :educations
     include_field :experiences
     include_field :skills
-    clone [:educations, :experiences, :skills]
+    include_field :projects
+    include_field :publications
+    include_field :volunteerings
+    clone [:educations, :experiences, :skills, :projects, :publications, :volunteerings]
   end
   
    

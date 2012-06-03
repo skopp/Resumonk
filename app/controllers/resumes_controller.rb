@@ -108,7 +108,7 @@ class ResumesController < ApplicationController
   # PUT /resume/1.json
   def update
     @resume = current_user.resumes.find(params[:id])
-
+    
     respond_to do |format|
       if @resume.update_attributes(params[:resume])
         format.html { redirect_to show_template_path(current_user, @resume), notice: 'Resume was successfully updated.' }
