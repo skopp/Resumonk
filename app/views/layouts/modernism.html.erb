@@ -82,7 +82,7 @@
             <div id="content">
               <% @resume.layout_order.split(" ").each do |item| %>
                   <% if item == "educations" %>
-
+                    <% if @resume.educations.any? %>
                       <div class="section">
                           <div class="section_header">
                             <h3 class="sub_heading">Education</h3>
@@ -100,9 +100,11 @@
                           </div>
                         <% end %>
                     </div><!--section-->
+                  <% end %>
 
 
                 <% elsif item == "experiences" %>
+                <% if @resume.experiences.any? %>
                     <div class="section">
                       <div class="section_header">
                         <h3 class="sub_heading">Experience</h3>
@@ -120,9 +122,11 @@
                       </div>
                     <% end %>
                   </div><!--section-->
+                <% end %>
 
 
                   <% elsif item == "projects" %>
+                  <% if @resume.projects.any? %>
                     <div class="section">
                       <div class="section_header">
                         <h3 class="sub_heading">Projects</h3>
@@ -142,8 +146,10 @@
                       </div>
                     <% end %>
                     </div><!--section-->
+                  <% end %>
 
                   <% elsif item == "publications" %>
+                  <% if @resume.publications.any? %>
                   <div class="section">
                        <div class="section_header">
                          <h3 class="sub_heading">Publications</h3>
@@ -162,8 +168,10 @@
                         </div>
                       <% end %>
                       </div><!--section-->
+                    <% end %>
 
                   <% elsif item == "volunteerings" %>   
+                  <% if @resume.volunteerings.any? %>
                     <div class="section">
                         <div class="section_header">
                           <h3 class="sub_heading">Volunteerings</h3>
@@ -184,6 +192,7 @@
                          </div>
                        <% end %>
                     </div><!--section-->
+                    <% end %>
 
               <% end %>
               <% end %>
