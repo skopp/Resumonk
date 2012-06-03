@@ -60,7 +60,7 @@ class ResumesController < ApplicationController
       format.html # new.html.erb
       format.json { render json: @resume }
     end
-  #end
+  end
   end
 
   # GET /resume/1
