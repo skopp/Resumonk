@@ -20,11 +20,6 @@
   <%= csrf_meta_tags %>
 
   <style>
-    <% unless @resume.font.blank? %>
-      body {
-        font-family: <%= @resume.font %>;
-      }
-    <% end %>
     
     <% unless @resume.color.blank? %>
       h1, h3 {

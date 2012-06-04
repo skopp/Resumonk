@@ -46,7 +46,7 @@
                 <%= f.text_field :color, id: "color_wheel_input", placeholder: "Color code" %>
               </div><!--colors_wrap-->
           
-              <ul id="font" class="change_font row">
+              <ul id="font" class="change_font row" style="display: none">
                 <h4>Change font</h4>
                 <li><span style="font-family: Georgia, serif;" data-font="'Georgia'">Georgia</span></li>
                 <li><span style="font-family: Arial, Helvetica, sans-serif;" data-font="'Arial'">Arial</span></li>
@@ -82,7 +82,7 @@
 <script>
   $(function()  {
     $(".layout_order").hide()
-    var cw = Raphael.colorwheel($("#color_wheel")[0],200).color("#0f0");
+    var cw = Raphael.colorwheel($("#color_wheel")[0],250).color("#0f0");
     //cw.input($("#color_wheel_input")[0]);
     cw.onchange(function(color)  {
      

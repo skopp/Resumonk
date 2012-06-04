@@ -25,12 +25,6 @@
         border-color: <%= @resume.color %>;
       }
       
-      <% unless @resume.font.blank? %>
-        body {
-          font-family: <%= @resume.font %>;
-        }
-      <% end %>
-      
       h1, h2, .date  {
         color: <%= @resume.color %>;
       }

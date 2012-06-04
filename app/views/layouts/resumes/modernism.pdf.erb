@@ -37,12 +37,7 @@
         border-bottom: 3px solid <%= @resume.color %>;
       }
     <% end %>
-    
-    <% unless @resume.font.blank? %>
-      body  {
-        font-family: <%= @resume.font %>;
-      }
-    <% end %>
+  
   </style>
   
   <script>
@@ -51,7 +46,9 @@
        var lighter_color = $.xcolor.opacity("<%= @resume.color %>", 'white', 0.7)
        $("#contact").css("background", lighter_color)
      <% end %>
-     
+     <% unless @resume.font.blank? %>
+        $("h1, h2, h3, h4, h5, h6, p, span, li, a").css("font-family", "<%= @resume.font %>");
+      <% end %>
      
     });
    </script>
@@ -233,14 +230,5 @@
         </div><!--sidebar-->
         </div><!--container_inner-->
         </div><!--container-->
-        <script>
-          $(document).ready(function() {
-           <% unless @resume.font.blank? %>
-             $("h1, h2, h3, h4, h5, h6, p, span, li, a").css("font-family", "<%= @resume.font %>");
-           <% end %>
-
-
-          });
-         </script>
   </body>
 </html>

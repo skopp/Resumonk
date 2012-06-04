@@ -23,11 +23,6 @@
     body {
       font-family: "Open Sans";
     }
-    <% unless @resume.font.blank? %>
-      body {
-        font-family: <%= @resume.font %>;
-      }
-    <% end %>
     
     <% unless @resume.color.blank? %>
       #about h1, h3.sub_heading, div.date  {
