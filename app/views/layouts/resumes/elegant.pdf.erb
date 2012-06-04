@@ -13,7 +13,13 @@
         }
 
       <% end %>
-
+      
+      
+      <% unless @resume.font.blank? %>
+        body  {
+          font-family: <%= @resume.font %>;
+        }
+      <% end %>
     </style>
 
     <script>
@@ -171,6 +177,6 @@
 
            <% end %>
            <% end %>
-    
+
   </body>
 </html>
