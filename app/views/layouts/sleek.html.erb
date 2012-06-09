@@ -52,8 +52,9 @@
 </head>
   <body class="sleek">
     
-    <%= render "show_page_header" %>
-    
+    <% unless params[:h] %>
+        <%= render "show_page_header" %>
+    <% end %>
     
     <div class="show_container">
        <div id="container">

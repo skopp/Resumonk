@@ -241,13 +241,7 @@ header {
     }
   }  
   
-  ul.single {
-    margin-right: -10px;
-    border: none;
-    background: none;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+  div.text_wrap {
     position: relative;
     span.completely_free  {
       position: absolute;
@@ -259,6 +253,15 @@ header {
       height: 32px;
     }
     
+  }
+  ul.single {
+    margin-right: -10px;
+    border: none;
+    background: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  
     li.single_link  {
       background: none;
       float: left;
