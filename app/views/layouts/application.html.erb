@@ -49,7 +49,7 @@
   }(document, 'script', 'facebook-jssdk'));</script>
   
   
-  <div id="header_border"></div>
+  
   <ul id="social_menu" class="clearfix hide-on-mobiles">
     <li><strong>Spread the word!</strong></li>
     <li><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.resumonk.com" data-via="resumonk" data-hashtags="resume">Tweet</a>
@@ -67,7 +67,19 @@
   	Data saved successfully.
   </div>
   
-  
+  <div id="top_header">
+    <div class="row">
+      <nav class="ten columns centered">
+      <ul>
+        <li><%= link_to "Home", root_path, title:"Resumonk - Resume builder" %>
+        <li><%= link_to "Resume Templates", resume_templates_path, title: "Resume designs and templates"%></li>
+        <li><%= link_to "Contact", contact_path, title: "Contact" %></li>
+        <li><a href="http://blog.resumonk.com" title="Resumonk Blog" target="_blank">Blog</a></li>
+        <li><%= link_to "Go PRO!", pro_path, title: "Go PRO!", class: "top_link_pro" %></li>
+      </ul>
+      </nav>
+    </div><!--row-->
+  </div><!--top_header-->
   <header class="container">
     <div class="row">
       <div class="ten columns offset-by-one">
@@ -110,13 +122,13 @@
   <footer>
     <div class="container">
       <div class="row">
-        <div class="ten columns offset-by-one">
+        <div class="ten columns centered">
           <p class="copyright four columns">&copy; <span title="Resumonk - Online resume builder">Resumonk</span>. All Rights Reserved.</p>
-          <ul class="sitemap right">
-            <li><%= link_to "Home", root_path %></li>
+          <ul class="sitemap eight columns right">
             <li><%= link_to "About", about_path %></li>
+            <li><%= link_to "Contact", contact_path %></li>
             <li><%= link_to "Conditions", toc_path %></li>
-            <li><%= link_to "Privacy Policy", privacy_path %></li>
+            <li><%= link_to "Privacy", privacy_path %></li>
             <li><%= link_to "FAQ", faq_path %></li>
             <li><%= link_to "Resume Templates", resume_templates_path %></li>
             <li class="footer_pro_link"><%= link_to "Go PRO!", pro_path %></li>

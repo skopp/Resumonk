@@ -25,4 +25,9 @@ class StaticPagesController < ApplicationController
   
   def pro
   end
+  
+  def contact
+    @user = User.new
+  end
+  
 end

@@ -25,6 +25,7 @@ Resumonk::Application.routes.draw do
   match "/about" => "static_pages#about", as: :about
   match "/faq" => "static_pages#faq", as: :faq
   match "/pro" => "static_pages#pro", as: :pro
+  match "/contact" => "static_pages#contact", as: :contact
   match "/privacy_policy" => "static_pages#privacy", as: :privacy
   match "/resume_templates" => "static_pages#resume_templates", as: :resume_templates
   match "users/:user_id/resumes/:id/info" => "resumes#info", as: :resume_info
