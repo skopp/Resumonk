@@ -19,7 +19,7 @@
           <tr>
             <td class="first">
               <h3><%= resume.title.blank? ? "Resume title" : resume.title %></h3>
-              <strong>Unique URL: </strong><%= link_to "http://resumonk.com/r/#{resume.short_link}", "http://resumonk.com/r/#{resume.short_link}", target: "_blank" %>
+              <strong>Unique URL: </strong><%= link_to "http://resumonk.com/r/#{resume.short_link}", "http://resumonk.com/r/#{resume.short_link}", target: "_blank", class: "resume_short_link" %>
              
             </td>
             
@@ -35,7 +35,7 @@
             
              <td><%= link_to 'Clone', clone_resume_path(current_user, resume), class: "clone button small white radius", method: :get, title: "Clone (copy) this resume" %><span class="tip_content">Clone (copy)</span></td>
              
-             <!-- <td><%= link_to "Embed", "#", class: "embed inactive button small white radius", title: "Embed this resume on your website"  %><span class="tip_content">Embed</span></td> -->
+             <td><%= link_to "Embed", "#", class: "embed inactive button small white radius", title: "Embed this resume on your website"  %><span class="tip_content">Embed</span></td>
              
             <td><%= link_to 'Destroy', [current_user, resume], confirm: 'Are you sure?', method: :delete, class: "delete button radius red small", title: "Delete!" %><span class="tip_content">Delete!</span></td>
             
@@ -62,17 +62,97 @@
     
     <%= render "shared/pro_signup_box" %>
   <% end %>
+  
+  
+  <div id="embed_modal" class="reveal-modal">
+       <h3>Embed your resume</h3>
+       <p class="lead">Use this code to embed your resume on your website or blog.</p>
+       <ul id="customizations">
+         <li class="range_wrap"><label>Width:</label>
+             <span class="limits">500px</span>
+             <input class="slider" type="range" max="1000" min="500" step="20" value="840" id="width" />
+             <span class="limits">1000px</span>
+             
+             <strong class="output width_val">840</strong>
+         </li>
+         
+         
+         <li class="range_wrap"><label>Height: </label>
+             <span class="limits">500px</span>
+             <input class="slider" type="range" max="1500" min="500" step="20" value="1000" id="height" />
+             <span class="limits">1500px</span>
+             
+             <strong class="output height_val">1000</strong>
+         </li>
+          
+         <li class="range_wrap"><label>Border thickness: </label>
+              <span class="limits">0px</span>
+              <input class="slider" type="range" max="25" min="0" step="1" value="5" id="thickness" />
+              <span class="limits">25px</span>
+              
+              <strong class="output border_val">5</strong>
+          </li>
+          
+          <li class="color_wrap"><label>Border color</label>
+                <div id="border_color"></div>
+                <input type="text" id="border_color_input" class="color" value="#000"/>
+            </li>
+      </ul>
+      
+       <p><strong>Place the code wherever you want your resume to appear on your page.</strong></p>
+       <textarea id="script_box"></textarea>
+       <a class="close-reveal-modal">&#215;</a>
+  </div>
    
  
 </section><!--dashboard-->
 <script>
-  $(function()  {
+  $(function()  {    
+    var cw = Raphael.colorwheel($("#border_color")[0],100).color("#0f0");
+    //cw.input($("#color_wheel_input")[0]);
+    function update_values(short_link, width, height, thickness, color)  {
+      $("#embed_modal").find("#script_box").val("<div id='resumonk-embed' style='width: " + width +"px; height: " + height + "px; border: " + thickness + "px solid " + color + "'><iframe src='" + short_link + "' width='"+ width +"' height='"+ height +"' style='border: none;'></iframe></div>")  
+    }
+    
     $(".resumes_list td a").each(function() {
       $(this).hover(function()  {
         $(this).parents("td").find("span.tip_content").fadeIn("fast");
       }, function() {
         $(this).parents("td").find("span.tip_content").fadeOut("fast");
       })
-    })
+    });
+    
+    $('.embed').click(function(e) {
+      $('#embed_modal').reveal();
+      var short_link = $(this).parents("tr").find(".resume_short_link").text();
+      var width = 840, height= 1000, thickness = 5, color = "#000";
+      update_values(short_link, width, height, thickness, color);
+      
+      
+      cw.onchange(function(color)  {
+        $("#border_color_input").val(cw.color().hex).css("background", cw.color().hex)
+        update_values(short_link, width, height, thickness, cw.color().hex)
+      })
+      
+      $(".slider, .color").change(function(){
+        $(this).parent("li").find(".output").text($(this).val())
+        width = $(".width_val").text();
+        height = $(".height_val").text();
+        thickness = $(".border_val").text();
+        color = $(".color").val()
+        update_values(short_link, width, height, thickness, color);
+      });
+      
+      $("#script_box").click(function() {
+        this.select()
+      })
+      
+      e.preventDefault();
+    });
+    
+    
+    
+    
+        
   })
 </script>
