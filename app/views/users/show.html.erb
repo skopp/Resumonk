@@ -111,7 +111,7 @@
     var cw = Raphael.colorwheel($("#border_color")[0],100).color("#0f0");
     //cw.input($("#color_wheel_input")[0]);
     function update_values(short_link, width, height, thickness, color)  {
-      $("#embed_modal").find("#script_box").val("<div id='resumonk-embed' style='width: " + width +"px; height: " + height + "px; border: " + thickness + "px solid " + color + "'><iframe src='" + short_link + "' width='"+ width +"' height='"+ height +"' style='border: none;'></iframe></div>")  
+      $("#embed_modal").find("#script_box").val("<div id='resumonk-embed' style='width: " + width +"px; height: " + height + "px; border: " + thickness + "px solid " + color + "'><iframe src='" + short_link + "' width='"+ width +"' height='"+ height +"' style='border: none; background:#fff'></iframe></div>")  
     }
     
     $(".resumes_list td a").each(function() {
