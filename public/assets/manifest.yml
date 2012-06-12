@@ -1,4 +1,5 @@
 ---
+analytics.png: analytics-82bfc336472cf62c8a85e890f2dd9eeb.png
 analytics_small.png: analytics_small-e2d748ee87c7a5a769228cecf04c968d.png
 bg.jpg: bg-8dbefa946b0ffb5171e7f349105f55b6.jpg
 border_top.jpg: border_top-74d35efdadac7172e2c30ed6211351a0.jpg
@@ -6,11 +7,15 @@ brush.jpg: brush-45d521f0506d871a61727d17deff63df.jpg
 change_layout_and_color_placeholder.jpg: change_layout_and_color_placeholder-ce3f2b3774e75834a1b933a34af5d486.jpg
 classica.jpg: classica-2bc3e52c31ce9d14f8431762d5f9ca3d.jpg
 classica_small.jpg: classica_small-cdf2f1a36eb026888d7accdd87655701.jpg
+clone.png: clone-727deb755811f3ad95b835208f135739.png
 completely_free.jpg: completely_free-eb4e0fbbc829e9b656505c7ee9198c39.jpg
 content_bg.jpg: content_bg-7dd9c6e7dcace0d9266d9430d086f0a2.jpg
 custom_slug.jpg: custom_slug-8fed05ff9202562bd0186dc392b5f164.jpg
+delete.png: delete-4b2e76276eb63320684ad8bd33500bf1.png
+edit.png: edit-39872b15e62ecab3a694dc41646064e3.png
 elegant.jpg: elegant-a6969996b3a8dd7ed9f60e709305cac8.jpg
 elegant_small.jpg: elegant_small-7f5d6a09a85ead268098dec9f1946376.jpg
+embed.png: embed-dea7f880449b678f3ccf5e4a5267cff9.png
 favicon.png: favicon-614c7a059cf57191e628994ef408584e.png
 featured_interface.jpg: featured_interface-634930cc3ee105afe2b13f2ecded5193.jpg
 featured_share.jpg: featured_share-d73f9565fc2ed3322447168ecdb8fd18.jpg
@@ -37,6 +42,7 @@ nav_active.png: nav_active-c004cf06ef4763a113e8a159ff0ea6e1.png
 nav_gradient.jpg: nav_gradient-27bf8881a37663de6ddfae8a41553242.jpg
 nav_inactive.png: nav_inactive-35d1e48c822092cad032bac0fdaa5b25.png
 or.jpg: or-da25705eff66e567ba25d9d6eddbc404.jpg
+pdf.png: pdf-c55f977d7fc95441075608c4b8940c0f.png
 pdf/dot.jpg: pdf/dot-08eb700496cde0414ad007704296a22a.jpg
 pdf/prestige_dots.jpg: pdf/prestige_dots-2e6e42b6a421a4682837c30f090e74c4.jpg
 pdf/prestige_header_border.jpg: pdf/prestige_header_border-092f1eb29bdce3497744f7040e622d7a.jpg
@@ -61,9 +67,10 @@ stylismo_small.jpg: stylismo_small-fefaaf8e841a9efc67b2473ba6cd122c.jpg
 templates_small.png: templates_small-466aa146b7828735bf9c86a21d3ad2fd.png
 top_header.jpg: top_header-4db26877533ea8eda076b91972cce261.jpg
 underline.jpg: underline-73509f42bd019da354ea942b49193429.jpg
+view.png: view-021c271bd5096354a9156252582a8003.png
 application.js: application-44ba8912dcf9c9342bf8a223a1df166f.js
-application.css: application-e38aef47cf3aa3bb3a1bed978dca5173.css
-basic_pdf.css: basic_pdf-92d8d07e869b4324fbe1e68797db71c4.css
+application.css: application-ccd5b93408d8e398069bba0abe2fcef2.css
+basic_pdf.css: basic_pdf-27227b78737605be09ce9f1b24df7b90.css
 classica_pdf.css: classica_pdf-30a1bfee3ee4213a5dff91a3757d476a.css
 modernism_pdf.css: modernism_pdf-375fb71e97276ed4610c74162143917e.css
 prestige_pdf.css: prestige_pdf-4dcbdedcf22eacd90166648c5945c164.css

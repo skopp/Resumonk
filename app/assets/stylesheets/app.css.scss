@@ -1221,8 +1221,34 @@ section.dashboard {
       font-size: 22px;
       padding-top: 5px;
     }
+    
+    td  {
+      position: relative;
+      span.tip_content  {
+        display: none;
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        width: 80px;
+        text-align: center;
+      	font-size: 11px;
+      	color: #fff;
+      	text-shadow: 0 0 2px #000;
+      	padding: 2px 5px;
+      	border: 1px solid rgba(255,255,255,0.25);
+      	background-color: rgb(25,25,25);
+      	background-color: rgba(25,25,25,0.92);
+      	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(transparent), to(#000));
+      	border-radius: 3px;
+      	-webkit-border-radius: 3px;
+      	-moz-border-radius: 3px;
+      	box-shadow: 0 0 3px #555;
+      	-webkit-box-shadow: 0 0 3px #555;
+      	-moz-box-shadow: 0 0 3px #555;
+      }
+    }
     td.first  {
-      width: 40%;
+      width: 45%;
     }
     
     
@@ -1232,14 +1258,58 @@ section.dashboard {
     }
     
     td a.button {
-      padding: 10px 15px;
+      width: 32px;
+      height: 32px;
+      padding: 5px;
+      text-indent: -9999px;
     }
-    a.green {
-      background: #38c506;
+    
+    td a.view {
+      background: #E9E9E9 url("../assets/view.png") center center no-repeat;
+    }
+    
+    td a.pdf  {
+      background: #38C506 url("../assets/pdf.png") center center no-repeat;
       &:hover {
-        background: darken(#38c506, 2%);
+        background: darken(#38C506, 5%) url("../assets/pdf.png") center center no-repeat;
       }
     }
+    
+    td a.analytics  {
+      background: #E9E9E9 url("../assets/analytics.png") center center no-repeat;
+    }
+    
+    td a.edit  {
+      background: #00A6FC url("../assets/edit.png") center center no-repeat;
+      &:hover {
+        background: darken(#00A6FC, 5%) url("../assets/edit.png") center center no-repeat;
+      }
+    }
+    
+    td a.clone  {
+      background: #E9E9E9 url("../assets/clone.png") center center no-repeat;
+    }
+    
+    td a.embed  {
+      background: #E9E9E9 url("../assets/embed.png") center center no-repeat;
+    }
+    
+    td a.delete  {
+      background: lighten(#E91C21, 30%) url("../assets/delete.png") center center no-repeat;
+      &:hover {
+        background: lighten(#E91C21, 20%) url("../assets/delete.png") center center no-repeat;
+      }
+    }
+    
+    //
+    //    a.green {
+    //      background: #38c506;
+    //      &:hover {
+    //        background: darken(#38c506, 2%);
+    //      }
+    //    }
+    
+    
   }
   
    margin-bottom: 30px;
@@ -1616,5 +1686,7 @@ section.analytics {
     }
   }
 }
+
+
 
 

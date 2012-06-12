@@ -14,7 +14,7 @@
    
     <% if @resumes.any? %>
       <div class="row">
-      <table class="ten columns centered">
+      <table class="ten columns centered resumes_list">
         <% @resumes.each do |resume| %>
           <tr>
             <td class="first">
@@ -23,18 +23,21 @@
              
             </td>
             
-            <td><%= link_to 'View', [current_user, resume], class: "button small white radius" %></td>
-            <td><%= link_to "Save PDF", user_resume_path(current_user, resume, format: "pdf"), class: "button small green radius"  %></td>
+            <td><%= link_to 'View', [current_user, resume], class: "view button small white radius", title: "View resume online" %><span class="tip_content">View online</span></td>
+            <td><%= link_to "Save PDF", user_resume_path(current_user, resume, format: "pdf"), class: " pdf button small green radius", title: "Download PDF"  %><span class="tip_content">Download PDF</span></td>
             
              <% if pro %>
-             <td><%= link_to 'Analytics', resume_info_path(current_user, resume), class: "button radius white small" %></td>
+             <td><%= link_to 'Analytics', resume_info_path(current_user, resume), class: "analytics button radius white small", title: "View Analytics" %><span class="tip_content">View Analytics</span></td>
               <% end %>
               
               
-            <td><%= link_to 'Edit', edit_user_resume_path(current_user, resume), class: "button small blue radius" %></td>
-             <td><%= link_to 'Clone', clone_resume_path(current_user, resume), class: "button small blue radius", method: :get %></td>
+            <td><%= link_to 'Edit', edit_user_resume_path(current_user, resume), class: "edit button small blue radius", title: "Edit resume" %><span class="tip_content">Edit resume</span></td>
+            
+             <td><%= link_to 'Clone', clone_resume_path(current_user, resume), class: "clone button small white radius", method: :get, title: "Clone (copy) this resume" %><span class="tip_content">Clone (copy)</span></td>
              
-            <td><%= link_to 'Destroy', [current_user, resume], confirm: 'Are you sure?', method: :delete, class: "button radius red small" %></td>
+             <!-- <td><%= link_to "Embed", "#", class: "embed inactive button small white radius", title: "Embed this resume on your website"  %><span class="tip_content">Embed</span></td> -->
+             
+            <td><%= link_to 'Destroy', [current_user, resume], confirm: 'Are you sure?', method: :delete, class: "delete button radius red small", title: "Delete!" %><span class="tip_content">Delete!</span></td>
             
             
           </tr>
@@ -62,4 +65,14 @@
    
  
 </section><!--dashboard-->
-
+<script>
+  $(function()  {
+    $(".resumes_list td a").each(function() {
+      $(this).hover(function()  {
+        $(this).parents("td").find("span.tip_content").fadeIn("fast");
+      }, function() {
+        $(this).parents("td").find("span.tip_content").fadeOut("fast");
+      })
+    })
+  })
+</script>
