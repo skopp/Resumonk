@@ -73,7 +73,7 @@
           <% unless @resume.objective.blank? %>
             <div id="objective">
               <p>
-                 <%= @resume.objective %>
+                 <%= @resume.objective.html_safe %>
               </p>
             </div>
           <% end %>

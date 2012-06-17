@@ -224,7 +224,7 @@
                 <span>Professional Profile</span>
               </div><!--section-header-->
 
-              <p><%= @resume.objective %></p>
+              <p><%= @resume.objective.html_safe %></p>
           </div><!--section-->
         </div><!--objective-->
             <% end %>

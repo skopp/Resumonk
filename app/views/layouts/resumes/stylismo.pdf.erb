@@ -53,7 +53,7 @@
           <% unless @resume.objective.blank? %>
             <div class="objective">
                 <h3 class="sub_heading">Professional Profile</h3>
-                <p><%= @resume.objective %></p>
+                <p><%= @resume.objective.html_safe %></p>
               </div><!--objective-->
           <% end %>
 

@@ -64,7 +64,7 @@
          <div class=" section objective_wrap clearfix">
           <% unless @resume.objective.blank? %>
             <div class="objective">
-                <p><%= @resume.objective %></p>
+                <p><%= @resume.objective.html_safe %></p>
               </div><!--objective-->
           <% end %>
 
