@@ -37,9 +37,9 @@
  <div class="field row objective">
    <%= f.label :objective, "Professional Profile", class: "one column subheading" %>
    <% unless @summary.nil? %>
-     <%= f.text_area :objective, class: "nine columns right small mceNoEditor", placeholder: "Example Professional Profile: Experienced solution sales professional, with a proven track record for turning around sales for aging products, cutting sales cycle lengths, and growing revenues by an average 35 percent", value: @summary.summary %>
+     <%= f.text_area :objective, class: "nine columns right small", placeholder: "Example Professional Profile: Experienced solution sales professional, with a proven track record for turning around sales for aging products, cutting sales cycle lengths, and growing revenues by an average 35 percent", value: @summary.summary %>
    <% else %>
-      <%= f.text_area :objective, class: "nine columns right small mceNoEditor", placeholder: "Example Professional Profile: Experienced solution sales professional, with a proven track record for turning around sales for aging products, cutting sales cycle lengths, and growing revenues by an average 35 percent" %>
+      <%= f.text_area :objective, class: "nine columns right small", placeholder: "Example Professional Profile: Experienced solution sales professional, with a proven track record for turning around sales for aging products, cutting sales cycle lengths, and growing revenues by an average 35 percent" %>
   <% end %>
    
  </div>
