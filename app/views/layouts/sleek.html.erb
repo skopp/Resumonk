@@ -57,7 +57,7 @@
     <% end %>
     
     <div class="show_container">
-       <div id="container">
+       <div id="container" class="clearfix">
 
           <div id="about">
             <h1><%= "#{@resume.firstname} #{@resume.lastname}" %></h1>
@@ -76,7 +76,7 @@
             <% end %>
           </ul><!--contact-->
 
-
+          <div class="content_wrapper clearfix">
           <div id="content">
             
               <% @resume.layout_order.split(" ").each do |item| %>
@@ -231,8 +231,9 @@
           <% end %>
 
       </div><!--sidebar-->
-        </div><!--container-->
-    
+      </div><!--content_wrapper-->
+    </div><!--container-->
+  </div><!--show_container-->
   </body>
   
 </html>

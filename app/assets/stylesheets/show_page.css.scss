@@ -128,7 +128,7 @@ header#fixed_nav  {
 /*------------ Sleek --------------*/
 .sleek {
   .show_container {
-    margin: 80px auto;
+    margin: 60px auto;
     width: 900px;
   }
   
@@ -148,6 +148,30 @@ header#fixed_nav  {
     }
   }
   
+}
+
+/*-----------------------------------
+  Clearfix
+  ---------------------------------*/
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+
+.clearfix {
+	display: inline-block;
+}
+
+html[xmlns] .clearfix {
+	display: block;
+}
+
+* html .clearfix {
+	height: 1%;
 }
 
   
