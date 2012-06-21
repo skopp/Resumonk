@@ -132,9 +132,13 @@ header#fixed_nav  {
     width: 900px;
   }
   
-  .description  {
-    margin-top: 5px;
+  .section  {
+    .description  {
+      margin-top: 5px;
+    }
   }
+  
+  
   
   header h1  {
     border-top: none;
