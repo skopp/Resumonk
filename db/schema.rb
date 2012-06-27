@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120603142235) do
+ActiveRecord::Schema.define(:version => 20120627195106) do
 
   create_table "educations", :force => true do |t|
     t.integer  "resume_id"
@@ -104,10 +104,12 @@ ActiveRecord::Schema.define(:version => 20120603142235) do
     t.string   "password"
     t.string   "password_digest"
     t.string   "remember_token"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "username"
-    t.boolean  "pro",             :default => false
+    t.boolean  "pro",                    :default => false
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
   add_index "users", ["username"], :name => "index_users_on_username"

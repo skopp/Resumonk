@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="eight columns offset-by-two login_box">
+    <div class="monk three columns">
+      <%= image_tag("monk.png") %>
+    </div>
+    
+    <%= form_for @user, :url => password_reset_path(params[:id]), html: { class:"nice eight columns right" } do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      <div class="field">
+        <%= f.label :password, "Enter your new password" %>
+        <%= f.password_field :password, class: "expand input-text" %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation, "Enter password again." %>
+        <%= f.password_field :password_confirmation, class: "expand input-text" %>
+      </div>
+      
+      <div class="action">
+         <%= f.submit "Update", class: "btn right" %>
+       </div>
+       
+    <% end %>
+    
+    
+  </div><!--ten columns-->
+</div><!--row-->

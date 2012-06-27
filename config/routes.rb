@@ -1,4 +1,5 @@
 Resumonk::Application.routes.draw do
+
   resources :volunteerings
 
   resources :publications
@@ -13,6 +14,8 @@ Resumonk::Application.routes.draw do
   resources :users do
     resources :resumes
   end
+  
+  resources :password_resets
   
   resources :sessions, only: [:new, :create, :destroy]
   resources :payment_notifications

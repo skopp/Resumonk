@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="eight columns offset-by-two login_box">
+    <div class="monk three columns">
+      <%= image_tag("monk.png") %>
+    </div>
+    <%= form_for(:password_reset, url: password_resets_path, method: :post, html: { class:"nice eight columns right" }) do |f| %>
+      <h4>Reset Password</h4>
+      <div class="field">
+        <%= f.label :email, "Enter the email id that you used to signup" %>
+        <%= f.text_field :email, class: "expand input-text", placeholder: "john@doe.com" %>
+      </div>
+
+      <div class="action">
+        <%= f.submit "Submit", class: "btn right"  %><br />
+      </div>
+    <% end %>
+  </div><!--ten columns-->
+</div><!--row-->
