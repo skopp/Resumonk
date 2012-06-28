@@ -92,11 +92,11 @@
                         <h2><%= education.institute_name %>
                             <span class="timespan">
                                <% unless education.start_date.blank? %>
-                                  <div class="date"><%= education.start_date %>
+                                  <%= education.start_date %>
                                 <% end %>
 
                                 <% unless education.end_date.blank? %>
-                                  to <%= education.end_date %></div>
+                                  to <%= education.end_date %>
                                 <% end %>
                             </span>
                         </h2>
@@ -126,11 +126,11 @@
                                 <h2><%= experience.designation %>
                                     <span class="timespan">
                                       <% unless experience.start_date.blank? %>
-                                          <div class="date"><%= experience.start_date %>
+                                          <%= experience.start_date %>
                                         <% end %>
 
                                         <% unless experience.end_date.blank? %>
-                                          to <%= experience.end_date %></div>
+                                          to <%= experience.end_date %>
                                         <% end %>
                                       
                                     </span>
@@ -169,11 +169,11 @@
                                   <h2><%= project.project_title %>
                                   <span class="timespan">
                                     <% unless project.start_date.blank? %>
-                                        <div class="date"><%= project.start_date %>
+                                        <%= project.start_date %>
                                       <% end %>
 
                                       <% unless project.end_date.blank? %>
-                                        to <%= project.end_date %></div>
+                                        to <%= project.end_date %>
                                       <% end %>
                                     
                                   </span>
@@ -227,11 +227,11 @@
                                     <h2><%= volunteering.organization %>
                                     <span class="timespan">
                                       <% unless volunteering.start_date.blank? %>
-                                           <div class="date"><%= volunteering.start_date %>
+                                          <%= volunteering.start_date %>
                                          <% end %>
 
                                          <% unless volunteering.end_date.blank? %>
-                                           to <%= volunteering.end_date %></div>
+                                           to <%= volunteering.end_date %>
                                          <% end %>
                                       
                                     </span>

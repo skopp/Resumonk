@@ -62,179 +62,179 @@
       <div class="clear"></div>
       
 
-          <dl>
-            
-            <% @resume.layout_order.split(" ").each do |item| %>
-                <% if item == "educations" %>
-                <% if @resume.educations.any? %>
-                  <dd class="clear"></dd>
-                  <dt>Education</dt>
+        <dl>
+          
+          <% @resume.layout_order.split(" ").each do |item| %>
+              <% if item == "educations" %>
+              <% if @resume.educations.any? %>
+                <dd class="clear"></dd>
+                <dt>Education</dt>
 
-                  <% @resume.educations.each do |education| %>
-                   <dd class="full">
-                        <h2><%= education.institute_name %>
-                            <span class="timespan">
-                               <% unless education.start_date.blank? %>
-                                  <div class="date"><%= education.start_date %>
-                                <% end %>
+                <% @resume.educations.each do |education| %>
+                 <dd class="full">
+                      <h2><%= education.institute_name %>
+                          <span class="timespan">
+                             <% unless education.start_date.blank? %>
+                                <%= education.start_date %>
+                              <% end %>
 
-                                <% unless education.end_date.blank? %>
-                                  to <%= education.end_date %></div>
-                                <% end %>
-                            </span>
-                        </h2>
+                              <% unless education.end_date.blank? %>
+                                to <%= education.end_date %>
+                              <% end %>
+                          </span>
+                      </h2>
 
-                        <p><strong><%= education.degree %>
+                      <p><strong><%= education.degree %>
 
-                          </strong><br />
-                        <% unless education.description.blank? %>
-                          <div class="description">
-                            <p><%= education.description.html_safe %></p>
-                          </div>
+                        </strong><br />
+                      <% unless education.description.blank? %>
+                        <div class="description">
+                          <p><%= education.description.html_safe %></p>
+                        </div>
+                      <% end %>
+                    </p>
+                  </dd>
+                <% end %>
+                <% end %>
+
+               <% elsif item == "experiences" %>
+               <% if @resume.experiences.any? %>
+                  <dd class="clear" style=" page-break-before:auto"></dd>
+                        <dd class="clear"></dd>
+
+                        <dt>Experience</dt>
+
+                        <% @resume.experiences.each do |experience| %>
+                         <dd class="full">
+                              <h2><%= experience.designation %>
+                                  <span class="timespan">
+                                    <% unless experience.start_date.blank? %>
+                                        <%= experience.start_date %>
+                                      <% end %>
+
+                                      <% unless experience.end_date.blank? %>
+                                        to <%= experience.end_date %>
+                                      <% end %>
+                                    
+                                  </span>
+                              </h2>
+
+                              <p><strong><%= experience.company_name %></strong><br />
+                              <p class="description"><%= experience.job_description.html_safe %></p>
+                          </dd>
                         <% end %>
-                      </p>
-                    </dd>
-                  <% end %>
-                  <% end %>
+                    <% end %>
+                        
+              <% elsif item == "skills" %>
+                <% if @resume.skills.any? %>
+                  <dd class="clear" style="margin-bottom: 10px; page-break-before:auto"></dd>
 
-                 <% elsif item == "experiences" %>
-                 <% if @resume.experiences.any? %>
-                    <dd class="clear" style=" page-break-before:auto"></dd>
+                    <% if @resume.skills.any? %>
+                      <dt>Skills</dt>
+                      <% @resume.skills.each do |skill| %>
+                        <dd class="full">
+                          <h2><%= skill.skill %></h2>
+                          <p><%= skill.description.html_safe %></p>
+                        </dd>
+                        <% end %>
+                    <% end %>
+                <% end %>
+                    
+              <% elsif item == "projects" %>
+                <% if @resume.projects.any? %>
+                   <dd class="clear" style=" page-break-before:auto"></dd>
                           <dd class="clear"></dd>
 
-                          <dt>Experience</dt>
+                          <dt>Projects</dt>
 
-                          <% @resume.experiences.each do |experience| %>
+                          <% @resume.projects.each do |project| %>
                            <dd class="full">
-                                <h2><%= experience.designation %>
-                                    <span class="timespan">
-                                      <% unless experience.start_date.blank? %>
-                                          <div class="date"><%= experience.start_date %>
-                                        <% end %>
+                                <h2><%= project.project_title %>
+                                <span class="timespan">
+                                  <% unless project.start_date.blank? %>
+                                      <%= project.start_date %>
+                                    <% end %>
 
-                                        <% unless experience.end_date.blank? %>
-                                          to <%= experience.end_date %></div>
-                                        <% end %>
-                                      
-                                    </span>
+                                    <% unless project.end_date.blank? %>
+                                      to <%= project.end_date %>
+                                    <% end %>
+                                  
+                                </span>
                                 </h2>
-
-                                <p><strong><%= experience.company_name %></strong><br />
-                                <p class="description"><%= experience.job_description.html_safe %></p>
+                                
+                                  <% unless project.url.blank? %>
+                                    <p><strong><%= link_to project.url %></strong><br />
+                                  <% end %>
+                                  
+                                  <% unless project.description.blank? %>
+                                    
+                                      <p class="description"><%= project.description.html_safe %></p>
+                                  
+                                  <% end %>
                             </dd>
                           <% end %>
-                      <% end %>
+                    <% end %>
                           
-                <% elsif item == "skills" %>
-                  <% if @resume.skills.any? %>
-                    <dd class="clear" style="margin-bottom: 10px; page-break-before:auto"></dd>
-
-                      <% if @resume.skills.any? %>
-                        <dt>Skills</dt>
-                        <% @resume.skills.each do |skill| %>
-                          <dd class="full">
-                            <h2><%= skill.skill %></h2>
-                            <p><%= skill.description.html_safe %></p>
-                          </dd>
-                          <% end %>
-                      <% end %>
-                  <% end %>
-                      
-                <% elsif item == "projects" %>
-                  <% if @resume.projects.any? %>
+                  <% elsif item == "publications" %>
+                    <% if @resume.publications.any? %>
                      <dd class="clear" style=" page-break-before:auto"></dd>
                             <dd class="clear"></dd>
 
-                            <dt>Projects</dt>
+                            <dt>Publications</dt>
 
-                            <% @resume.projects.each do |project| %>
+                            <% @resume.publications.each do |publication| %>
                              <dd class="full">
-                                  <h2><%= project.project_title %>
-                                  <span class="timespan">
-                                    <% unless project.start_date.blank? %>
-                                        <div class="date"><%= project.start_date %>
-                                      <% end %>
+                                  <h2><%= publication.title %>
+                                  <span class="timespan"><%= publication.date %></span>
+                                  </h2>
 
-                                      <% unless project.end_date.blank? %>
-                                        to <%= project.end_date %></div>
-                                      <% end %>
+                                  <% unless publication.publisher.blank? %>
+                                    <p><strong><%= publication.publisher %></strong><br />
+                                  <% end %>
+                                  
+                                  <p class="description"><%= publication.description.html_safe %></p>
+                              </dd>
+                            <% end %>
+                        <% end %>
+                            
+                            
+                  <% elsif item == "volunteering" %>
+                    <% if @resume.volunteerings.any? %>
+                     <dd class="clear" style=" page-break-before:auto"></dd>
+                            <dd class="clear"></dd>
+
+                            <dt>Volunteering</dt>
+
+                            <% @resume.volunteerings.each do |volunteering| %>
+                             <dd class="full">
+                                  <h2><%= volunteering.organization %>
+                                  <span class="timespan">
+                                    <% unless volunteering.start_date.blank? %>
+                                        <%= volunteering.start_date %>
+                                       <% end %>
+
+                                       <% unless volunteering.end_date.blank? %>
+                                         to <%= volunteering.end_date %>
+                                       <% end %>
                                     
                                   </span>
                                   </h2>
                                   
-                                    <% unless project.url.blank? %>
-                                      <p><strong><%= link_to project.url %></strong><br />
-                                    <% end %>
-                                    
-                                    <% unless project.description.blank? %>
-                                      
-                                        <p class="description"><%= project.description.html_safe %></p>
-                                    
-                                    <% end %>
+                                  <% unless volunteering.cause.blank? %>
+                                    <p>Cause: <strong><%= volunteering.cause %></strong><br />
+                                  <% end %>
+                                  
+                                  <% unless volunteering.description.blank? %>
+                                     <p class="description"><%= volunteering.description.html_safe %></p>
+                                   <% end %>
+                                   
+                                  
                               </dd>
                             <% end %>
-                      <% end %>
-                            
-                    <% elsif item == "publications" %>
-                      <% if @resume.publications.any? %>
-                       <dd class="clear" style=" page-break-before:auto"></dd>
-                              <dd class="clear"></dd>
-
-                              <dt>Publications</dt>
-
-                              <% @resume.publications.each do |publication| %>
-                               <dd class="full">
-                                    <h2><%= publication.title %>
-                                    <span class="timespan"><%= publication.date %></span>
-                                    </h2>
-
-                                    <% unless publication.publisher.blank? %>
-                                      <p><strong><%= publication.publisher %></strong><br />
-                                    <% end %>
-                                    
-                                    <p class="description"><%= publication.description.html_safe %></p>
-                                </dd>
-                              <% end %>
                           <% end %>
-                              
-                              
-                    <% elsif item == "volunteering" %>
-                      <% if @resume.volunteerings.any? %>
-                       <dd class="clear" style=" page-break-before:auto"></dd>
-                              <dd class="clear"></dd>
-
-                              <dt>Volunteering</dt>
-
-                              <% @resume.volunteerings.each do |volunteering| %>
-                               <dd class="full">
-                                    <h2><%= volunteering.organization %>
-                                    <span class="timespan">
-                                      <% unless volunteering.start_date.blank? %>
-                                           <div class="date"><%= volunteering.start_date %>
-                                         <% end %>
-
-                                         <% unless volunteering.end_date.blank? %>
-                                           to <%= volunteering.end_date %></div>
-                                         <% end %>
-                                      
-                                    </span>
-                                    </h2>
-                                    
-                                    <% unless volunteering.cause.blank? %>
-                                      <p>Cause: <strong><%= volunteering.cause %></strong><br />
-                                    <% end %>
-                                    
-                                    <% unless volunteering.description.blank? %>
-                                       <p class="description"><%= volunteering.description.html_safe %></p>
-                                     <% end %>
-                                     
-                                    
-                                </dd>
-                              <% end %>
-                            <% end %>
-                  <% end %>
                 <% end %>
-          </dl>
+              <% end %>
+        </dl>
       <div class="clear"></div>
     </div><!--page-wrap-->
   </body>
