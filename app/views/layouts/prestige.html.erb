@@ -85,7 +85,7 @@
                   <% if @resume.educations.any? %>
                     <div class="section">
                         <div class="section_header">
-                          <span>Education</span>
+                          <span><%= @resume.educations_header.blank? ? "Education" : @resume.educations_header %></span>
                         </div><!--section-header-->
                       <% @resume.educations.each_with_index do |education, index| %>
                         <div class="item">
@@ -118,7 +118,7 @@
                 <% if @resume.experiences.any? %>
                   <div class="section">
                     <div class="section_header">
-                      <span>Experience</span>
+                      <span><%= @resume.experiences_header.blank? ? "Experience" : @resume.experiences_header %></span>
                     </div><!--section-header-->
 
                   <% @resume.experiences.each_with_index do |experience, index| %>
@@ -151,7 +151,7 @@
                   <% if @resume.projects.any? %>
                   <div class="section">
                     <div class="section_header">
-                      <span>Projects</span>
+                      <span><%= @resume.projects_header.blank? ? "Projects" : @resume.projects_header %></span>
                     </div><!--section-header-->
 
 
@@ -188,7 +188,7 @@
                 <% if @resume.publications.any? %>
                 <div class="section">
                   <div class="section_header">
-                    <span>Publications</span>
+                    <span><%= @resume.publications_header.blank? ? "Publications" : @resume.publications_header %></span>
                   </div><!--section-header-->
 
 
@@ -216,7 +216,7 @@
                 <% if @resume.volunteerings.any? %>  
                   <div class="section">
                       <div class="section_header">
-                        <span>Volunteerings</span>
+                        <span><%= @resume.volunteerings_header.blank? ? "Volunteering" : @resume.volunteerings_header %></span>
                       </div><!--section-header-->
 
 
@@ -272,7 +272,7 @@
             <div class="section skills">
                 <div class="section_header">
 
-                  <span>Skills</span>
+                  <span><%= @resume.skills_header.blank? ? "Skills" : @resume.skills_header %></span>
                 </div><!--section-header-->
             <% @resume.skills.each do |skill| %>
                <div class="item">

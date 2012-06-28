@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120627195106) do
+ActiveRecord::Schema.define(:version => 20120628183609) do
 
   create_table "educations", :force => true do |t|
     t.integer  "resume_id"
@@ -77,16 +77,22 @@ ActiveRecord::Schema.define(:version => 20120627195106) do
     t.string   "phone"
     t.string   "website"
     t.text     "objective"
-    t.datetime "created_at",                                                                                    :null => false
-    t.datetime "updated_at",                                                                                    :null => false
+    t.datetime "created_at",                                                                                            :null => false
+    t.datetime "updated_at",                                                                                            :null => false
     t.string   "layout"
     t.string   "title"
     t.string   "short_link"
     t.string   "designation"
     t.string   "email"
-    t.string   "layout_order", :default => "educations experiences skills projects publications volunteerings"
+    t.string   "layout_order",         :default => "educations experiences skills projects publications volunteerings"
     t.string   "color"
     t.string   "font"
+    t.string   "educations_header",    :default => "Education"
+    t.string   "experiences_header",   :default => "Experience"
+    t.string   "skills_header",        :default => "Skills"
+    t.string   "projects_header",      :default => "Projects"
+    t.string   "publications_header",  :default => "Publications"
+    t.string   "volunteerings_header", :default => "Volunteering"
   end
 
   add_index "resumes", ["short_link"], :name => "index_resumes_on_short_link"

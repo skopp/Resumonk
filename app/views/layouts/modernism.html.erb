@@ -80,7 +80,7 @@
                     <% if @resume.educations.any? %>
                       <div class="section">
                           <div class="section_header">
-                            <h3 class="sub_heading">Education</h3>
+                            <h3 class="sub_heading"><%= @resume.educations_header.blank? ? "Education" : @resume.educations_header %></h3>
                           </div><!--section-header-->
                         <% @resume.educations.each_with_index do |education, index| %>
                           <div class="item">
@@ -111,7 +111,7 @@
                 <% if @resume.experiences.any? %>
                     <div class="section">
                       <div class="section_header">
-                        <h3 class="sub_heading">Experience</h3>
+                        <h3 class="sub_heading"><%= @resume.experiences_header.blank? ? "Experience" : @resume.experiences_header %></h3>
                       </div><!--section-header-->
 
                     <% @resume.experiences.each_with_index do |experience, index| %>
@@ -142,7 +142,7 @@
                   <% if @resume.projects.any? %>
                     <div class="section">
                       <div class="section_header">
-                        <h3 class="sub_heading">Projects</h3>
+                        <h3 class="sub_heading"><%= @resume.projects_header.blank? ? "Projects" : @resume.projects_header %></h3>
                       </div><!--section-header-->
 
 
@@ -176,7 +176,7 @@
                   <% if @resume.publications.any? %>
                   <div class="section">
                        <div class="section_header">
-                         <h3 class="sub_heading">Publications</h3>
+                         <h3 class="sub_heading"><%= @resume.publications_header.blank? ? "Publications" : @resume.publications_header %></h3>
                        </div><!--section-header-->
 
 
@@ -200,7 +200,7 @@
                   <% if @resume.volunteerings.any? %>
                     <div class="section">
                         <div class="section_header">
-                          <h3 class="sub_heading">Volunteerings</h3>
+                          <h3 class="sub_heading"><%= @resume.volunteerings_header.blank? ? "Volunteering" : @resume.volunteerings_header %></h3>
                         </div><!--section-header-->
 
 
@@ -256,7 +256,7 @@
             <div class="section skills">
                 <div class="section_header">
 
-                  <h3 class="sub_heading">Skills</h3>
+                  <h3 class="sub_heading"><%= @resume.skills_header.blank? ? "Skills" : @resume.skills_header %></h3>
                 </div><!--section-header-->
             <% @resume.skills.each do |skill| %>
                <div class="item">

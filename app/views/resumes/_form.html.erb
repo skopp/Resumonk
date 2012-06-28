@@ -53,7 +53,10 @@
               <h3 class="hidden_field_placeholder" style="display: none">Education details...</h3>
               <div class="block row">
                 
-               <p class="subheading two columns">Education Details</p>
+               <p class="subheading two columns">
+                <%= f.text_field :educations_header, class: "click_to_edit", value: @resume.educations_header || "Education", placeholder: "Education" %>
+                <small>Click to change.</small>
+                </p>
                  <% if @profile.nil? %>
                      <%= f.fields_for :educations do |education_form| %>
                        <%= render "education", :f => education_form %>  
@@ -81,7 +84,11 @@
             <h3 class="hidden_field_placeholder" style="display: none">Employment details...</h3>
               <div class="block row">
                 
-               <p class="subheading two columns">Employment details</p>
+               <p class="subheading two columns">
+                 <%= f.text_field :experiences_header, class: "click_to_edit", value: @resume.experiences_header || "Experience", placeholder: "Experience" %>
+                 <small>Click to change.</small>
+                
+               </p>
              <% if @profile.nil? %>
               <% i = 0 %>
                 <%= f.fields_for :experiences do |experience_form| %>
@@ -111,7 +118,11 @@
          <h3 class="hidden_field_placeholder" style="display: none">Additional Information...</h3>
          
          <div class="block row">
-           <p class="subheading two columns">Additional Information</p>
+           <p class="subheading two columns">
+              <%= f.text_field :skills_header, class: "click_to_edit", value: @resume.skills_header || "Additional Information", placeholder: "Additional Information" %>
+              <small>Click to change.</small>
+              
+           </p>
           <% if @profile.nil? or @profile.skills.empty? %>
              <%= f.fields_for :skills do |skill_form| %>
                <%= render "skill", :f => skill_form %>  
@@ -138,7 +149,11 @@
           
          
          <div class="block row">
-           <p class="subheading two columns">Projects</p>
+           <p class="subheading two columns">
+              <%= f.text_field :projects_header, class: "click_to_edit", value: @resume.projects_header || "Projects", placeholder: "Projects" %>
+              <small>Click to change.</small>
+            
+           </p>
              <%= f.fields_for :projects do |project_form| %>
                <%= render "project", :f => project_form %>  
              <% end %>
@@ -156,7 +171,10 @@
             
            
            <div class="block row">
-             <p class="subheading two columns">Publications</p>
+             <p class="subheading two columns">
+                <%= f.text_field :publications_header, class: "click_to_edit", value: @resume.publications_header || "Publications", placeholder: "Publications" %>
+                <small>Click to change.</small>
+             </p>
                <%= f.fields_for :publications do |publication_form| %>
                  <%= render "publication", :f => publication_form %>  
                <% end %>
@@ -173,7 +191,11 @@
               
              
              <div class="block row">
-               <p class="subheading two columns">Volunteering</p>
+               <p class="subheading two columns">
+                  <%= f.text_field :volunteerings_header, class: "click_to_edit", value: @resume.volunteerings_header || "Volunteering", placeholder: "Volunteering" %>
+                  <small>Click to change.</small>
+                
+               </p>
                  <%= f.fields_for :volunteerings do |volunteering_form| %>
                    <%= render "volunteering", :f => volunteering_form %>  
                  <% end %>

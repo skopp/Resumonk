@@ -26,7 +26,7 @@
           <% if item == "educations" %>
             <% if @resume.educations.any? %>
               <div class="section">
-                <h2>Education</h2>
+                <h2><%= @resume.educations_header.blank? ? "Education" : @resume.educations_header %></h2>
                 <% @resume.educations.each do |education| %>
                   <div class="item">
                     <h3><%= education.institute_name %></h3>
@@ -55,7 +55,7 @@
      <% elsif item == "experiences" %>
          <% if @resume.experiences.any? %>
           <div class="section">
-            <h2>Experience</h2>
+            <h2><%= @resume.experiences_header.blank? ? "Experience" : @resume.experiences_header %></h2>
             <% @resume.experiences.each do |experience| %>
               <div class="item">
                 <h3><%= experience.company_name %></h3>
@@ -82,7 +82,7 @@
 
           <% if @resume.skills.any? %>
             <div class="section skills">
-              <h2>Skills</h2>
+              <h2><%= @resume.skills_header.blank? ? "Skills" : @resume.skills_header %></h2>
               <% @resume.skills.each do |skill| %>
                  <div class="item">
                     <h3><%= skill.skill %></h3>
@@ -99,7 +99,7 @@
          <% elsif item == "projects" %>
             <% if @resume.projects.any? %>
               <div class="section">
-                <h2>Projects</h2>
+                <h2><%= @resume.projects_header.blank? ? "Projects" : @resume.projects_header %></h2>
 
               <% @resume.projects.each do |project| %>
                 <div class="item">
@@ -130,7 +130,7 @@
          <% elsif item == "publications" %>
            <% if @resume.publications.any? %>
             <div class="section">
-                <h2>Publications</h2>
+                <h2><%= @resume.publications_header.blank? ? "Publications" : @resume.publications_header %></h2>
 
 
                 <% @resume.publications.each do |publication| %>
@@ -153,7 +153,7 @@
          <% elsif item == "volunteering" %>
            <% if @resume.volunteerings.any? %>
               <div class="section">
-                  <h2>Volunteering</h2>
+                  <h2><%= @resume.volunteerings_header.blank? ? "Volunteering" : @resume.volunteerings_header %></h2>
 
                  <% @resume.volunteerings.each do |volunteering| %>
                    <div class="item">

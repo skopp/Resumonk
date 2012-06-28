@@ -85,7 +85,7 @@
                 <% if item == "educations" %>
                 <% if @resume.educations.any? %>
                   <dd class="clear"></dd>
-                  <dt>Education</dt>
+                  <dt><%= @resume.educations_header.blank? ? "Education" : @resume.educations_header %></dt>
 
                   <% @resume.educations.each do |education| %>
                    <dd class="full">
@@ -119,7 +119,7 @@
                     <dd class="clear" style=" page-break-before:auto"></dd>
                           <dd class="clear"></dd>
 
-                          <dt>Experience</dt>
+                          <dt><%= @resume.experiences_header.blank? ? "Experience" : @resume.experiences_header %></dt>
 
                           <% @resume.experiences.each do |experience| %>
                            <dd class="full">
@@ -147,7 +147,7 @@
                     <dd class="clear" style="margin-bottom: 10px; page-break-before:auto"></dd>
 
                       <% if @resume.skills.any? %>
-                        <dt>Skills</dt>
+                        <dt><%= @resume.skills_header.blank? ? "Skills" : @resume.skills_header %></dt>
                         <% @resume.skills.each do |skill| %>
                           <dd class="full">
                             <h2><%= skill.skill %></h2>
@@ -162,7 +162,7 @@
                      <dd class="clear" style=" page-break-before:auto"></dd>
                             <dd class="clear"></dd>
 
-                            <dt>Projects</dt>
+                            <dt><%= @resume.projects_header.blank? ? "Projects" : @resume.projects_header %></dt>
 
                             <% @resume.projects.each do |project| %>
                              <dd class="full">
@@ -197,7 +197,7 @@
                        <dd class="clear" style=" page-break-before:auto"></dd>
                               <dd class="clear"></dd>
 
-                              <dt>Publications</dt>
+                              <dt><%= @resume.publications_header.blank? ? "Publications" : @resume.publications_header %></dt>
 
                               <% @resume.publications.each do |publication| %>
                                <dd class="full">
@@ -220,7 +220,7 @@
                        <dd class="clear" style=" page-break-before:auto"></dd>
                               <dd class="clear"></dd>
 
-                              <dt>Volunteering</dt>
+                              <dt><%= @resume.volunteerings_header.blank? ? "Volunteering" : @resume.volunteerings_header %></dt>
 
                               <% @resume.volunteerings.each do |volunteering| %>
                                <dd class="full">

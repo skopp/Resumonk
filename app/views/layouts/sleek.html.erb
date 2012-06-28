@@ -85,7 +85,7 @@
                     <div class="section">
                         <div class="section_header">
                           <%= image_tag 'pdf/dot.jpg', class:"dot" %>
-                          <span>Education</span>
+                          <span><%= @resume.educations_header.blank? ? "Education" : @resume.educations_header %></span>
                         </div><!--section-header-->
                       <% @resume.educations.each do |education| %>
                         <div class="item">
@@ -115,7 +115,7 @@
                     <div class="section">
                       <div class="section_header">
                         <%= image_tag 'pdf/dot.jpg', class:"dot" %>
-                        <span>Experience</span>
+                        <span><%= @resume.experiences_header.blank? ? "Experience" : @resume.experiences_header %></span>
                       </div><!--section-header-->
 
                     <% @resume.experiences.each do |experience| %>
@@ -145,7 +145,7 @@
                   <div class="section">
                       <div class="section_header">
                         <%= image_tag 'pdf/dot.jpg', class:"dot" %>
-                        <span>Projects</span>
+                        <span><%= @resume.projects_header.blank? ? "Projects" : @resume.projects_header %></span>
                       </div><!--section-header-->
 
                     <% @resume.projects.each do |project| %>
@@ -179,7 +179,7 @@
                   <div class="section">
                         <div class="section_header">
                           <%= image_tag 'pdf/dot.jpg', class:"dot" %>
-                          <span>Publications</span>
+                          <span><%= @resume.publications_header.blank? ? "Publications" : @resume.publications_header %></span>
                         </div><!--section-header-->
 
                       <% @resume.publications.each do |publication| %>
@@ -203,7 +203,7 @@
                     <div class="section">
                          <div class="section_header">
                            <%= image_tag 'pdf/dot.jpg', class:"dot" %>
-                           <span>Volunteering</span>
+                           <span><%= @resume.volunteerings_header.blank? ? "Volunteering" : @resume.volunteerings_header %></span>
                          </div><!--section-header-->
 
                        <% @resume.volunteerings.each do |volunteering| %>
@@ -257,7 +257,7 @@
           <div class="section skills">
                 <div class="section_header">
                   <%= image_tag 'pdf/dot.jpg', class:"dot" %>
-                  <span>Skills</span>
+                  <span><%= @resume.skills_header.blank? ? "Skills" : @resume.skills_header %></span>
                 </div><!--section-header-->
             <% @resume.skills.each do |skill| %>
                <div class="item">
