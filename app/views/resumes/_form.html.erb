@@ -54,7 +54,7 @@
               <div class="block row">
                 
                <p class="subheading two columns">
-                <%= f.text_field :educations_header, class: "click_to_edit", value: @resume.educations_header || "Education", placeholder: "Education" %>
+                <%= f.text_field :educations_header, class: "click_to_edit", placeholder: "Education" %>
                 <small>Click to change.</small>
                 </p>
                  <% if @profile.nil? %>
@@ -85,7 +85,7 @@
               <div class="block row">
                 
                <p class="subheading two columns">
-                 <%= f.text_field :experiences_header, class: "click_to_edit", value: @resume.experiences_header || "Experience", placeholder: "Experience" %>
+                 <%= f.text_field :experiences_header, class: "click_to_edit", placeholder: "Experience" %>
                  <small>Click to change.</small>
                 
                </p>
@@ -119,7 +119,7 @@
          
          <div class="block row">
            <p class="subheading two columns">
-              <%= f.text_field :skills_header, class: "click_to_edit", value: @resume.skills_header || "Additional Information", placeholder: "Additional Information" %>
+              <%= f.text_field :skills_header, class: "click_to_edit", placeholder: "Additional Information" %>
               <small>Click to change.</small>
               
            </p>
@@ -150,7 +150,7 @@
          
          <div class="block row">
            <p class="subheading two columns">
-              <%= f.text_field :projects_header, class: "click_to_edit", value: @resume.projects_header || "Projects", placeholder: "Projects" %>
+              <%= f.text_field :projects_header, class: "click_to_edit", placeholder: "Projects" %>
               <small>Click to change.</small>
             
            </p>
@@ -172,7 +172,7 @@
            
            <div class="block row">
              <p class="subheading two columns">
-                <%= f.text_field :publications_header, class: "click_to_edit", value: @resume.publications_header || "Publications", placeholder: "Publications" %>
+                <%= f.text_field :publications_header, class: "click_to_edit", placeholder: "Publications" %>
                 <small>Click to change.</small>
              </p>
                <%= f.fields_for :publications do |publication_form| %>
@@ -192,7 +192,7 @@
              
              <div class="block row">
                <p class="subheading two columns">
-                  <%= f.text_field :volunteerings_header, class: "click_to_edit", value: @resume.volunteerings_header || "Volunteering", placeholder: "Volunteering" %>
+                  <%= f.text_field :volunteerings_header, class: "click_to_edit", placeholder: "Volunteering" %>
                   <small>Click to change.</small>
                 
                </p>
