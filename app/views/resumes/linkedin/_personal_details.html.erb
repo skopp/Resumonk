@@ -1,19 +1,19 @@
 <div class="field row">
    <div class="six columns">
     <%= f.label :firstname, "Enter your first name" %>  
-    <%= f.text_field :firstname, class: "large input-text", placeholder: "Jonathan", value: p.first_name %>
+    <%= f.text_field :firstname, class: "large input-text required", placeholder: "Jonathan", value: p.first_name %>
    </div><!--six columns-->
    
    <div class="five columns offset-by-one">
      <%= f.label :lastname, "Enter your last name" %>
-     <%= f.text_field :lastname, class: "medium input-text", placeholder: "Doe", value: p.last_name %>
+     <%= f.text_field :lastname, class: "medium input-text required", placeholder: "Doe", value: p.last_name %>
    </div><!--six columns-->
  </div><!--row-->
 
 <div class="field row">     
   <div class="six columns">  
     <%= f.label :address %>        
-    <%= f.text_area :address, class: "large small mceNoEditor", placeholder: "1600 Amphitheatre Parkway, Mountain View, California, 94043", value: @location.location.name %>
+    <%= f.text_area :address, class: "large small mceNoEditor required" , placeholder: "1600 Amphitheatre Parkway, Mountain View, California, 94043", value: @location.location.name %>
   </div>
   
   <div class="five columns right offset-by-one">
@@ -37,7 +37,7 @@
  <div class="field row objective">
    <%= f.label :objective, "Professional Profile", class: "one column subheading" %>
    <% unless @summary.nil? %>
-     <%= f.text_area :objective, class: "nine columns right small", placeholder: "Example Professional Profile: Experienced solution sales professional, with a proven track record for turning around sales for aging products, cutting sales cycle lengths, and growing revenues by an average 35 percent", value: @summary.summary %>
+     <%= f.text_area :objective, class: "nine columns right small required", placeholder: "Example Professional Profile: Experienced solution sales professional, with a proven track record for turning around sales for aging products, cutting sales cycle lengths, and growing revenues by an average 35 percent", value: @summary.summary %>
    <% else %>
       <%= f.text_area :objective, class: "nine columns right small", placeholder: "Example Professional Profile: Experienced solution sales professional, with a proven track record for turning around sales for aging products, cutting sales cycle lengths, and growing revenues by an average 35 percent" %>
   <% end %>

@@ -959,6 +959,15 @@ section.inner_page {
 // Resume Interface
 // ---------------------------------------
 section.resume_form {
+  .employment_details table.mceLayout  {
+    border: 1px solid red;
+  }
+  
+  small.required_notification {
+    text-align: center;
+    display: block;
+  }
+    
   h3.hidden_field_placeholder {
     color: darken($border, 10%);
     font-size: 22px;
@@ -1121,6 +1130,11 @@ section.resume_form {
       input.input-text, textarea  {
         padding: 8px;
         resize: none;
+      }
+      
+      input.required, textarea.required  {
+        border-color: red;
+        border-color: rgba(255, 0, 0, 0.8);
       }
       
       .large {

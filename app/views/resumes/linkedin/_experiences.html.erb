@@ -1,19 +1,24 @@
 
    <div class="fields ten columns right">
-
+     
+     <div class="field row institute">
+       <%= f.label :position, "Position", class: "position_label" %><small class="ordering">Ascending order (smaller number shown first)</small>
+       <%= f.number_field :position, class: "input-text", placeholder: "1" %>
+     </div>
+     
      <div class="field row institute">
          <%= f.label :designation, "Designation*" %>
-         <%= f.text_field :designation, class: "input-text eleven columns left", placeholder: "Assistant Manager" , value: p.title %>
+         <%= f.text_field :designation, class: "input-text eleven columns left required", placeholder: "Assistant Manager" , value: p.title %>
      </div>
 
      <div class="field row institute">
           <%= f.label :company_name, "Name of the company*" %>
-          <%= f.text_field :company_name, class: "input-text eleven columns left", placeholder: "ABC Corp.", value:p.company.name  %>
+          <%= f.text_field :company_name, class: "input-text eleven columns left required", placeholder: "ABC Corp.", value:p.company.name  %>
      </div>
 
      <div class="field row institute">
           <%= f.label :job_description, "Job description*" %>
-          <%= f.text_area :job_description, class: "input-text small eleven columns left", style: "margin-left: 0;padding: 8px 15px", value: p.summary %>
+          <%= f.text_area :job_description, class: "input-text small eleven columns left required", style: "margin-left: 0;padding: 8px 15px", value: p.summary %> 
       </div> 
 
 

@@ -21,7 +21,7 @@
        <header>
          <%= f.text_field :title, class: "four columns centered resume_title", value: @resume.title || "Resume Title" %>
        </header>
-       
+       <small class="required_notification">Required fields are highlighed in red</small>
        <% if @resume.errors.any? %>
          <div id="error_explanation">
             <h3><%= pluralize(@resume.errors.count, "error") %> prohibited this resume from being saved:</h3>
@@ -76,7 +76,7 @@
           
           
           <div class="row">
-          <fieldset class="eleven columns centered">
+          <fieldset class="eleven columns centered employment_details">
             <a href="#" title="Minimize Employment details" class="minimize hide">Minimize</a>
             <h3 class="hidden_field_placeholder" style="display: none">Employment details...</h3>
               <div class="block row">

@@ -2,13 +2,13 @@
   
   <div class="field row institute">
       <%= f.label :institute_name, "School's name*" %>
-      <%= f.text_field :institute_name, class: "input-text eleven columns left" %>
+      <%= f.text_field :institute_name, class: "input-text eleven columns left required" %>
   </div>
   
   <div class="field row">
      <div class="six columns">
        <%= f.label :degree, "Name of the qualifying degree*" %>
-       <%= f.text_field :degree, class: "input-text", placeholder: "Bachelor of Engineering" %>
+       <%= f.text_field :degree, class: "input-text required", placeholder: "Bachelor of Engineering" %>
      </div><!--six columns-->
 
      <div class="six columns">

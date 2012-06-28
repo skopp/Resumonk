@@ -2,7 +2,7 @@
   
   <div class="field row institute">
       <%= f.label :title, "Publication Title" %>
-      <%= f.text_field :title, class: "input-text eleven columns left", placeholder: "Title of your publication" %>
+      <%= f.text_field :title, class: "input-text eleven columns left required", placeholder: "Title of your publication" %>
   </div>
   
   <div class="field row institute">
@@ -12,12 +12,12 @@
    
   <div class="field row institute">
        <%= f.label :date, "Publication date" %>
-       <%= f.text_field :date, class: "input-text eleven columns left", placeholder: "19th May, 2012" %>
+       <%= f.text_field :date, class: "input-text eleven columns left required", placeholder: "19th May, 2012" %>
   </div>
   
    <div class="row institute field">
       <%= f.label :description %>
-      <%= f.text_area :description, class: "input-text eleven columns left small", style: "margin-left: 0;padding: 8px 15px" %>
+      <%= f.text_area :description, class: "input-text eleven columns left small required", style: "margin-left: 0;padding: 8px 15px" %>
     </div>
 
 

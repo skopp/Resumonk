@@ -90,7 +90,15 @@
                   <% @resume.educations.each do |education| %>
                    <dd class="full">
                         <h2><%= education.institute_name %>
-                            <span class="timespan"><%= education.start_date %> to <%= education.end_date %></span>
+                            <span class="timespan">
+                               <% unless education.start_date.blank? %>
+                                  <div class="date"><%= education.start_date %>
+                                <% end %>
+
+                                <% unless education.end_date.blank? %>
+                                  to <%= education.end_date %></div>
+                                <% end %>
+                            </span>
                         </h2>
 
                         <p><strong><%= education.degree %>
@@ -116,7 +124,16 @@
                           <% @resume.experiences.each do |experience| %>
                            <dd class="full">
                                 <h2><%= experience.designation %>
-                                    <span class="timespan"><%= experience.start_date %> to <%= experience.end_date %></span>
+                                    <span class="timespan">
+                                      <% unless experience.start_date.blank? %>
+                                          <div class="date"><%= experience.start_date %>
+                                        <% end %>
+
+                                        <% unless experience.end_date.blank? %>
+                                          to <%= experience.end_date %></div>
+                                        <% end %>
+                                      
+                                    </span>
                                 </h2>
 
                                 <p><strong><%= experience.company_name %></strong><br />
@@ -150,11 +167,27 @@
                             <% @resume.projects.each do |project| %>
                              <dd class="full">
                                   <h2><%= project.project_title %>
-                                  <span class="timespan"><%= project.start_date %> to <%= project.end_date %></span>
-                                  </h2>
+                                  <span class="timespan">
+                                    <% unless project.start_date.blank? %>
+                                        <div class="date"><%= project.start_date %>
+                                      <% end %>
 
-                                  <p><strong><%= link_to project.url %></strong><br />
-                                  <p class="description"><%= project.description.html_safe %></p>
+                                      <% unless project.end_date.blank? %>
+                                        to <%= project.end_date %></div>
+                                      <% end %>
+                                    
+                                  </span>
+                                  </h2>
+                                  
+                                    <% unless project.url.blank? %>
+                                      <p><strong><%= link_to project.url %></strong><br />
+                                    <% end %>
+                                    
+                                    <% unless project.description.blank? %>
+                                      
+                                        <p class="description"><%= project.description.html_safe %></p>
+                                    
+                                    <% end %>
                               </dd>
                             <% end %>
                       <% end %>
@@ -172,7 +205,10 @@
                                     <span class="timespan"><%= publication.date %></span>
                                     </h2>
 
-                                    <p><strong><%= publication.publisher %></strong><br />
+                                    <% unless publication.publisher.blank? %>
+                                      <p><strong><%= publication.publisher %></strong><br />
+                                    <% end %>
+                                    
                                     <p class="description"><%= publication.description.html_safe %></p>
                                 </dd>
                               <% end %>
@@ -189,14 +225,27 @@
                               <% @resume.volunteerings.each do |volunteering| %>
                                <dd class="full">
                                     <h2><%= volunteering.organization %>
-                                    <span class="timespan"><%= volunteering.start_date %> to <%= volunteering.end_date %></span>
+                                    <span class="timespan">
+                                      <% unless volunteering.start_date.blank? %>
+                                           <div class="date"><%= volunteering.start_date %>
+                                         <% end %>
+
+                                         <% unless volunteering.end_date.blank? %>
+                                           to <%= volunteering.end_date %></div>
+                                         <% end %>
+                                      
+                                    </span>
                                     </h2>
                                     
                                     <% unless volunteering.cause.blank? %>
                                       <p>Cause: <strong><%= volunteering.cause %></strong><br />
                                     <% end %>
                                     
-                                    <p class="description"><%= volunteering.description.html_safe %></p>
+                                    <% unless volunteering.description.blank? %>
+                                       <p class="description"><%= volunteering.description.html_safe %></p>
+                                     <% end %>
+                                     
+                                    
                                 </dd>
                               <% end %>
                             <% end %>
