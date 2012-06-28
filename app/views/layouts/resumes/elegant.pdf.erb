@@ -53,29 +53,7 @@
         
       </ul>
 
-      <div id="about">
-         <div id="story">
-           <h1><%= "#{@resume.firstname} #{@resume.lastname}" %></h1>
-           <h2><%= designation(@resume) %></h2>
-
-           <% unless @resume.objective.blank? %>
-             <p><%= @resume.objective.html_safe %></p>
-           <% end %>
-         </div>
-
-         <ul id="contact">
-           <% unless @resume.phone.blank? %>
-             <li><span>Phone: </span> <strong><%= @resume.phone %></strong></li>
-           <% end %>
-           <li><span>Address: </span> <strong><%= @resume.address %></strong></li>
-
-           <% unless @resume.website.blank? %>
-             <li><span>Website: </span> <strong><%= link_to @resume.website, @resume.website %></strong></li>
-           <% end %>
-
-           <li><span>Email: </span> <strong> <a class="email" href='mailto:<%= "#{email(@resume)}" %>'><%= email(@resume) %></a></strong></li>
-
-         </ul>
+      
 
           <% @resume.layout_order.split(" ").each do |item| %>
                <% if item == "educations" %>

@@ -64,6 +64,7 @@
                     <div class="item">
                       <h3><%= education.institute_name %></h3>
                       <h4><%= education.degree %></h4>
+                      <div class="date">
                          <% unless education.start_date.blank? %>
                             <%= education.start_date %>
                           <% end %>
@@ -71,6 +72,7 @@
                           <% unless education.end_date.blank? %>
                             to <%= education.end_date %>
                           <% end %>
+                        </div>
                       <% unless education.description.blank? %>
                         <div class="description">
                           <p><%= education.description.html_safe %></p>
