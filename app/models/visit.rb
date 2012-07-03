@@ -22,7 +22,7 @@ class Visit < ActiveRecord::Base
       data << visit[1]
       labels << (visit[0] =~ /(\d+)\-(\d+)\-(\d+)/ ? "#{$3.to_i}/#{$2.to_i}" : "")
     end
-    "http://chart.apis.google.com/chart?chs=820x180&cht=bvs&chxt=x&chco=a4b3f4&chm=N,000000,0,-1,11&chxl=0:|#{labels.join('|')}&chds=0,#{data.last+10}&chd=t:#{data.join(',')}"
+    "http://chart.apis.google.com/chart?chs=820x180&cht=bvs&chxt=x&chco=a4b3f4&chm=N,000000,0,-1,11&chxl=0:|#{labels.join('|')}&chds=0,#{(data.last).to_i+10}&chd=t:#{data.join(',')}"
   end
 
   def self.count_country_chart(identifier,map)
