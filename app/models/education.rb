@@ -4,4 +4,5 @@ class Education < ActiveRecord::Base
   # validations
   validates :institute_name, :degree, presence: true
   # validates :gpa, format: { with: /^[0-9]+\.[0-9]{2}$/ }, allow_blank: true
+  default_scope order('position asc')
 end
