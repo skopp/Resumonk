@@ -1,4 +1,8 @@
 <div class="fields ten columns right">
+  <div class="field row institute">
+    <%= f.label :position, "Position", class: "position_label" %><small class="ordering">Ascending order (smaller number shown first)</small>
+    <%= f.number_field :position, class: "input-text", placeholder: "1" %>
+  </div>
   
   <div class="row institute field">
      <%= f.label :skill, "Skill or Expertise" %>

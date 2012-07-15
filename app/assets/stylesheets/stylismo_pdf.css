@@ -61,6 +61,15 @@ div.section {
   font-weight: 700;
 }
 
+#about h3 {
+  text-align: center;
+  font-size: 26px;
+  margin-top: -20px;
+  color: #eaf5fb;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
 h3.sub_heading  {
   color: #01a9e7;
   text-transform: uppercase;
