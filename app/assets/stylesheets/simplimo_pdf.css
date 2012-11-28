@@ -19,6 +19,16 @@
   dd { width: 650px; float: right;}
   h3.references { width: 600px; float: right; font-style: italic; color: #999;}
   dd.full {border-left: 1px solid #999; padding-left: 26px;}
+  dd.full h2 {
+	  width: 450px;
+  }
+  
+  dd.full h2 span {
+	  position: absolute;
+	  left: 470px;
+	  width: 200px;
+  }
+  
   dd.clear { float: none; margin: 0; height: 15px; }
   
   .clearfix:after {
